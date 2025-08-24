@@ -20,14 +20,14 @@ export const merchants: Merchant[] = [
     name: "Afran AlBassam",
     description: "Traditional Lebanese bakery",
     image: "https://pixabay.com/get/g07a85babe398f982a8a1430e9df06cb4deb27eee055924d8b372699d3e3ce44502a0a99ba0e6bcd2da9ec808938c8b2bdd63133468d362daf25824cac185a74b_1280.jpg",
-    buttonColor: "green"
+    buttonColor: "blue"
   },
   {
     id: "abirs",
     name: "Abir's Pharmacy",
     description: "Health and wellness products",
     image: "https://images.unsplash.com/photo-1576671081837-49000212a370?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-    buttonColor: "green"
+    buttonColor: "blue"
   }
 ];
 
