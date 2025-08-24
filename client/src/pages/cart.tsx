@@ -158,12 +158,14 @@ export default function CartPage() {
                   </div>
                   
                   <div className="mt-6 space-y-3">
-                    <Button 
-                      className="w-full bg-shoufly-blue hover:bg-blue-600 text-white"
-                      data-testid="button-checkout"
-                    >
-                      Proceed to Checkout
-                    </Button>
+                    <Link href="/checkout" className="block">
+                      <Button 
+                        className="w-full bg-shoufly-blue hover:bg-blue-600 text-white"
+                        data-testid="button-checkout"
+                      >
+                        Proceed to Checkout
+                      </Button>
+                    </Link>
                     <Link href="/" className="block">
                       <Button 
                         variant="outline" 
