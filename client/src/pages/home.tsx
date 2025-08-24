@@ -19,7 +19,7 @@ export default function Home() {
         </section>
 
         {/* Merchants Grid */}
-        <section>
+        <section id="merchants">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8" data-testid="text-featured-merchants">
             Featured Merchants
           </h2>

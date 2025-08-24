@@ -20,9 +20,9 @@ export function Header() {
           </Link>
           <nav className="flex items-center space-x-4 sm:space-x-8">
             <div className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-merchants">
+              <Link href="/#merchants" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-merchants">
                 Merchants
-              </a>
+              </Link>
               <Link href="/about" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-about">
                 About
               </Link>
