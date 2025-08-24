@@ -26,9 +26,9 @@ export function Header() {
               <a href="#" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-about">
                 About
               </a>
-              <a href="#" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-contact">
+              <Link href="/contact" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-contact">
                 Contact
-              </a>
+              </Link>
             </div>
             <Link href="/cart" className="relative text-gray-600 hover:text-shoufly-blue transition-colors p-2 -m-2" data-testid="link-cart">
               <ShoppingCart size={20} className="sm:w-6 sm:h-6" />

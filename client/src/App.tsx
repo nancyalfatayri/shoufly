@@ -8,6 +8,7 @@ import Home from "@/pages/home";
 import MerchantPage from "@/pages/merchant";
 import CartPage from "@/pages/cart";
 import CheckoutPage from "@/pages/checkout";
+import ContactPage from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/merchant/:id" component={MerchantPage} />
       <Route path="/cart" component={CartPage} />
       <Route path="/checkout" component={CheckoutPage} />
+      <Route path="/contact" component={ContactPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
