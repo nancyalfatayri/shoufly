@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@shared/schema";
 import { Apple, Croissant, Milk, Cookie, Battery, StickyNote, Pill, Bandage, Thermometer } from "lucide-react";
+import { useCart } from "@/contexts/cart-context";
 
 interface ProductCardProps {
   product: Product;
@@ -24,9 +25,11 @@ const getProductIcon = (productName: string) => {
 
 export function ProductCard({ product, merchantButtonColor }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
+  const { dispatch } = useCart();
   const IconComponent = getProductIcon(product.name);
 
   const handleAddToCart = () => {
+    dispatch({ type: 'ADD_ITEM', payload: product });
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 1000);
   };
