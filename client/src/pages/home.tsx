@@ -11,7 +11,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="text-center mb-8 sm:mb-12">
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2" data-testid="text-hero-title">
-            Discover Local <span className="text-shoufly-blue">Merchants</span>
+            Shop Local, <span className="text-shoufly-blue">Delivered Fast</span>
           </h1>
           <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto px-2" data-testid="text-hero-description">
             Shop from your favorite local stores and get everything delivered to your door
