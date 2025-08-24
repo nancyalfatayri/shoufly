@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
+import shouflylLogo from "@assets/image_1756062618411.png";
 
 export function Header() {
   const { state } = useCart();
@@ -12,7 +13,7 @@ export function Header() {
         <div className="flex justify-between items-center h-14 sm:h-16">
           <Link href="/" className="flex items-center cursor-pointer" data-testid="link-home">
             <img
-              src="@assets/image_1756062618411.png"
+              src={shouflylLogo}
               alt="Shoufly logo"
               className="h-8 sm:h-10 w-auto"
             />
