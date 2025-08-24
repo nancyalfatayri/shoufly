@@ -12,14 +12,14 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
       <img
         src={merchant.image}
         alt={`${merchant.name} storefront`}
-        className="w-full h-48 object-cover"
+        className="w-full h-40 sm:h-48 object-cover"
         data-testid={`img-merchant-${merchant.id}`}
       />
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2" data-testid={`text-merchant-name-${merchant.id}`}>
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2" data-testid={`text-merchant-name-${merchant.id}`}>
           {merchant.name}
         </h3>
-        <p className="text-gray-600 mb-4" data-testid={`text-merchant-description-${merchant.id}`}>
+        <p className="text-sm sm:text-base text-gray-600 mb-4" data-testid={`text-merchant-description-${merchant.id}`}>
           {merchant.description}
         </p>
         <Link href={`/merchant/${merchant.id}`}>
@@ -28,7 +28,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
               merchant.buttonColor === 'blue' 
                 ? 'bg-shoufly-blue hover:bg-blue-600' 
                 : 'bg-shoufly-green hover:bg-green-600'
-            } text-white py-2 px-4 rounded-lg transition-colors`}
+            } text-white py-3 px-4 rounded-lg transition-colors text-sm sm:text-base font-medium min-h-[44px]`}
             data-testid={`button-shop-${merchant.id}`}
           >
             Shop Now

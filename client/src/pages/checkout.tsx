@@ -22,19 +22,19 @@ export default function CheckoutPage() {
       <div className="min-h-screen bg-gray-50 font-inter">
         <Header />
         
-        <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <main className="max-w-2xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-16">
           <div className="text-center">
             <div className="mx-auto mb-6">
-              <CheckCircle className="mx-auto h-16 w-16 text-shoufly-green" />
+              <CheckCircle className="mx-auto h-12 sm:h-16 w-12 sm:w-16 text-shoufly-green" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4" data-testid="text-order-confirmed">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4" data-testid="text-order-confirmed">
               Order Confirmed!
             </h1>
-            <p className="text-lg text-gray-600 mb-8" data-testid="text-order-message">
+            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4" data-testid="text-order-message">
               Thank you for your order. Your items will be delivered with cash on delivery.
             </p>
             <Link href="/">
-              <Button className="bg-shoufly-blue hover:bg-blue-600 text-white" data-testid="button-continue-shopping">
+              <Button className="bg-shoufly-blue hover:bg-blue-600 text-white py-3 px-6 text-base font-medium min-h-[44px]" data-testid="button-continue-shopping">
                 Continue Shopping
               </Button>
             </Link>
@@ -48,29 +48,29 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-gray-50 font-inter">
       <Header />
       
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* Checkout Header */}
-        <div className="flex items-center mb-8">
+        <div className="flex items-start mb-6 sm:mb-8">
           <Link href="/cart">
             <Button 
               variant="ghost" 
-              className="mr-4 text-shoufly-blue hover:text-blue-600 p-2"
+              className="mr-3 sm:mr-4 text-shoufly-blue hover:text-blue-600 p-2 min-h-[44px] min-w-[44px]"
               data-testid="button-back-to-cart"
             >
-              <ArrowLeft className="text-xl" />
+              <ArrowLeft className="text-lg sm:text-xl" />
             </Button>
           </Link>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900" data-testid="text-checkout-title">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2" data-testid="text-checkout-title">
               Checkout
             </h1>
-            <p className="text-gray-600" data-testid="text-checkout-subtitle">
+            <p className="text-sm sm:text-base text-gray-600" data-testid="text-checkout-subtitle">
               Review your order and confirm
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Order Items */}
           <div className="bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="p-6">
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
               {/* Confirm Order Button */}
               <Button 
                 onClick={confirmOrder}
-                className="w-full bg-shoufly-blue hover:bg-blue-600 text-white py-3 text-lg font-semibold"
+                className="w-full bg-shoufly-blue hover:bg-blue-600 text-white py-4 text-base sm:text-lg font-semibold min-h-[48px]"
                 data-testid="button-confirm-order"
               >
                 Confirm Order
@@ -154,7 +154,7 @@ export default function CheckoutPage() {
                 <Link href="/cart">
                   <Button 
                     variant="ghost" 
-                    className="text-shoufly-blue hover:text-blue-600"
+                    className="text-shoufly-blue hover:text-blue-600 py-3 min-h-[44px]"
                     data-testid="button-back-to-cart-link"
                   >
                     Back to Cart

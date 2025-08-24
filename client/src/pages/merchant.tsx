@@ -32,38 +32,38 @@ export default function MerchantPage() {
     <div className="min-h-screen bg-gray-50 font-inter">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* Merchant Header */}
-        <div className="flex items-center mb-8">
+        <div className="flex items-start mb-6 sm:mb-8">
           <Link href="/">
             <Button 
               variant="ghost" 
-              className="mr-4 text-shoufly-blue hover:text-blue-600 p-2"
+              className="mr-3 sm:mr-4 text-shoufly-blue hover:text-blue-600 p-2 min-h-[44px] min-w-[44px]"
               data-testid="button-back"
             >
-              <ArrowLeft className="text-xl" />
+              <ArrowLeft className="text-lg sm:text-xl" />
             </Button>
           </Link>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900" data-testid={`text-merchant-title-${merchant.id}`}>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2" data-testid={`text-merchant-title-${merchant.id}`}>
               {merchant.name}
             </h1>
-            <p className="text-gray-600" data-testid={`text-merchant-subtitle-${merchant.id}`}>
+            <p className="text-sm sm:text-base text-gray-600" data-testid={`text-merchant-subtitle-${merchant.id}`}>
               {merchant.description}
             </p>
           </div>
         </div>
 
         {/* Payment Info */}
-        <div className="bg-shoufly-green/10 border border-shoufly-green/20 rounded-lg p-4 mb-8" data-testid="payment-info">
+        <div className="bg-shoufly-green/10 border border-shoufly-green/20 rounded-lg p-3 sm:p-4 mb-6 sm:mb-8" data-testid="payment-info">
           <div className="flex items-center">
-            <Truck className="text-shoufly-green mr-3" />
-            <span className="text-shoufly-green font-medium">Cash on Delivery Available</span>
+            <Truck className="text-shoufly-green mr-2 sm:mr-3 flex-shrink-0" size={18} />
+            <span className="text-shoufly-green font-medium text-sm sm:text-base">Cash on Delivery Available</span>
           </div>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid={`grid-products-${merchant.id}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" data-testid={`grid-products-${merchant.id}`}>
           {merchantProducts.map((product) => (
             <ProductCard 
               key={product.id} 

@@ -36,14 +36,14 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden">
-      <div className="h-48 bg-gray-200 flex items-center justify-center" data-testid={`img-product-${product.id}`}>
-        <IconComponent className="text-4xl text-gray-400" size={64} />
+      <div className="h-36 sm:h-48 bg-gray-200 flex items-center justify-center" data-testid={`img-product-${product.id}`}>
+        <IconComponent className="text-gray-400" size={48} />
       </div>
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2" data-testid={`text-product-name-${product.id}`}>
+      <div className="p-4 sm:p-6">
+        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2" data-testid={`text-product-name-${product.id}`}>
           {product.name}
         </h3>
-        <p className={`text-2xl font-bold mb-4 ${
+        <p className={`text-xl sm:text-2xl font-bold mb-4 ${
           merchantButtonColor === 'blue' ? 'text-shoufly-blue' : 'text-shoufly-green'
         }`} data-testid={`text-product-price-${product.id}`}>
           {product.price}
@@ -56,7 +56,7 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
               : merchantButtonColor === 'blue' 
                 ? 'bg-shoufly-blue hover:bg-blue-600' 
                 : 'bg-shoufly-green hover:bg-green-600'
-          } text-white py-2 px-4 rounded-lg transition-colors`}
+          } text-white py-3 px-4 rounded-lg transition-colors text-sm sm:text-base font-medium min-h-[44px]`}
           data-testid={`button-add-to-cart-${product.id}`}
         >
           {isAdded ? 'Added!' : 'Add to Cart'}
