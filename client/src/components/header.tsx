@@ -10,12 +10,12 @@ export function Header() {
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14 sm:h-16">
+        <div className="flex justify-between items-center h-18 sm:h-20">
           <Link href="/" className="flex items-center cursor-pointer" data-testid="link-home">
             <img
               src={shouflylLogo}
               alt="Shoufly logo"
-              className="h-14 sm:h-16 w-auto"
+              className="h-16 sm:h-18 w-auto"
             />
           </Link>
           <nav className="flex items-center space-x-4 sm:space-x-8">
