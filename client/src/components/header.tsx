@@ -15,7 +15,7 @@ export function Header() {
             <img
               src={shouflylLogo}
               alt="Shoufly logo"
-              className="h-10 sm:h-12 w-auto"
+              className="h-14 sm:h-16 w-auto"
             />
           </Link>
           <nav className="flex items-center space-x-4 sm:space-x-8">
