@@ -14,7 +14,7 @@ export default function Home() {
             Shop Local, <span className="text-shoufly-blue">Delivered Fast</span>
           </h1>
           <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto px-2" data-testid="text-hero-description">
-            Order from your favorite local stores and get everything delivered to your door
+            Order from your favorite local stores and get it delivered straight to your door
           </p>
         </section>
 
