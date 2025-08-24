@@ -9,6 +9,7 @@ import MerchantPage from "@/pages/merchant";
 import CartPage from "@/pages/cart";
 import CheckoutPage from "@/pages/checkout";
 import ContactPage from "@/pages/contact";
+import AboutPage from "@/pages/about";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/cart" component={CartPage} />
       <Route path="/checkout" component={CheckoutPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/about" component={AboutPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

@@ -23,9 +23,9 @@ export function Header() {
               <a href="#" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-merchants">
                 Merchants
               </a>
-              <a href="#" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-about">
+              <Link href="/about" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-about">
                 About
-              </a>
+              </Link>
               <Link href="/contact" className="text-gray-600 hover:text-shoufly-blue transition-colors text-sm lg:text-base" data-testid="link-contact">
                 Contact
               </Link>
