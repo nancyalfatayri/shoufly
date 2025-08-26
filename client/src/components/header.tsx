@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { ShoppingCart, Menu, X, Home, Info, Mail } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { useState } from "react";
-import shouflylLogo from "@assets/image_1756062618411.png";
+import shouflylLogo from "@assets/generated_images/Shoufly_modern_delivery_logo_5ce80390.png";
 
 export function Header() {
   const { state } = useCart();
@@ -27,7 +27,7 @@ export function Header() {
               <img
                 src={shouflylLogo}
                 alt="Shoufly logo"
-                className="h-12 sm:h-16 w-auto transition-transform duration-300 hover:scale-105"
+                className="h-10 sm:h-12 w-auto transition-transform duration-300 hover:scale-105"
               />
             </Link>
 
@@ -112,7 +112,7 @@ export function Header() {
             <img
               src={shouflylLogo}
               alt="Shoufly logo"
-              className="h-12 w-auto"
+              className="h-8 w-auto"
             />
             <button
               onClick={closeMobileMenu}

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { merchants } from "@/lib/data";
 import { Search, MapPin, Clock, Star, Truck, Shield, Heart } from "lucide-react";
 import { Link } from "wouter";
+import shouflylLogo from "@assets/generated_images/Shoufly_modern_delivery_logo_5ce80390.png";
 
 export default function Home() {
   return (
@@ -193,11 +194,10 @@ export default function Home() {
             <div className="md:col-span-2">
               <div className="flex items-center mb-4">
                 <img
-                  src="/api/placeholder/120/40"
+                  src={shouflylLogo}
                   alt="Shoufly logo"
                   className="h-8 w-auto"
                 />
-                <span className="ml-2 text-xl font-bold">Shoufly</span>
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
                 Connecting you with the best local businesses. Fresh groceries, pharmacy items, and more delivered to your door.
