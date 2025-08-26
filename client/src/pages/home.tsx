@@ -100,29 +100,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">50+</div>
-                <div className="text-gray-600 font-medium">Local Partners</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-secondary mb-2">10K+</div>
-                <div className="text-gray-600 font-medium">Happy Customers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-accent mb-2">25min</div>
-                <div className="text-gray-600 font-medium">Avg. Delivery</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">4.8★</div>
-                <div className="text-gray-600 font-medium">Customer Rating</div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Merchants Section */}
         <section id="merchants" className="pb-16">
