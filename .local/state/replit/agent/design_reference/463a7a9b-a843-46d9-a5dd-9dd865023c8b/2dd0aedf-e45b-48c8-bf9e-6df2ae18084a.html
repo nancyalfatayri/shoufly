@@ -1,0 +1,427 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoufly - Local Merchants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'shoufly-blue': '#4A9EDB',
+                    'shoufly-green': '#7BB842',
+                },
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif'],
+                }
+            }
+        }
+    };
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- @COMPONENT: Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center cursor-pointer" onclick="showPage('home')">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8IS0tIFNob3VmbHkgTG9nbyBSZWNyZWF0aW9uIC0tPgo8IS0tIEJhZyBJY29uIC0tPgo8cGF0aCBkPSJNMTUgMTVoMTB2NWgtMTB6IiBmaWxsPSIjNEE5RURCIi8+CjxwYXRoIGQ9Ik0xMiAyMGgyMHYyNUgxMnoiIGZpbGw9IiM0QTlFREIiLz4KPHN0cm9rZSBkPSJNMTYgMTVoOCIgc3Ryb2tlPSIjNEE5RURCIiBzdHJva2Utd2lkdGg9IjIiLz4KPCEtLSBBcnJvdyBJY29uIC0tPgo8cGF0aCBkPSJNMzggMjJsOCA4LTggOE0zOCAzMGgxNiIgc3Ryb2tlPSIjN0JCODQyIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KPHN0cm9rZSBkPSJNMzQgMjZoNE0zNCAzNGg0IiBzdHJva2U9IiM3QkI4NDIiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPgo8IS0tIFNob3VmbHkgVGV4dCAtLT4KPHRleHQgeD0iNzAiIHk9IjMwIiBmb250LWZhbWlseT0iSW50ZXIsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM0QTlFREIiPlNob3VmbHk8L3RleHQ+Cjwvc3ZnPgo=" alt="Shoufly Logo" class="h-8 w-auto mr-3">
+                    <span class="text-2xl font-bold text-shoufly-blue">Shoufly</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-shoufly-blue transition-colors">Merchants</a>
+                    <a href="#" class="text-gray-600 hover:text-shoufly-blue transition-colors">About</a>
+                    <a href="#" class="text-gray-600 hover:text-shoufly-blue transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: MainContent -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Home Page -->
+        <div id="home-page" class="page">
+            <!-- @COMPONENT: HeroSection -->
+            <section class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Discover Local <span class="text-shoufly-blue">Merchants</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Shop from your favorite local stores and get everything delivered to your door
+                </p>
+            </section>
+            <!-- @END_COMPONENT: HeroSection -->
+
+            <!-- @COMPONENT: MerchantsGrid -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Featured Merchants</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Tarabay's Market -->
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                        <!-- Fresh produce and grocery items displayed in a modern market setting -->
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Grocery market with fresh produce" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Tarabay's Market</h3>
+                            <p class="text-gray-600 mb-4">Fresh groceries and everyday essentials</p>
+                            <button onclick="showMerchantPage('tarabays')" class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Coop Dmit -->
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                        <!-- Modern convenience store interior with well-organized shelves and products -->
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Convenience store with organized shelves" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Coop Dmit</h3>
+                            <p class="text-gray-600 mb-4">Convenience store with general goods</p>
+                            <button onclick="showMerchantPage('coopdmit')" class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Afran AlBassam -->
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                        <!-- Traditional Lebanese manoushe flatbread with za'atar and olive oil -->
+                        <img src="https://pixabay.com/get/g07a85babe398f982a8a1430e9df06cb4deb27eee055924d8b372699d3e3ce44502a0a99ba0e6bcd2da9ec808938c8b2bdd63133468d362daf25824cac185a74b_1280.jpg" alt="Lebanese manoushe flatbread with za'atar" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Afran AlBassam</h3>
+                            <p class="text-gray-600 mb-4">Traditional Lebanese bakery</p>
+                            <button onclick="showMerchantPage('afran')" class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Abir's Pharmacy -->
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                        <!-- Modern pharmacy storefront with clear signage and professional appearance -->
+                        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Modern pharmacy storefront" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Abir's Pharmacy</h3>
+                            <p class="text-gray-600 mb-4">Health and wellness products</p>
+                            <button onclick="showMerchantPage('abirs')" class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- @END_COMPONENT: MerchantsGrid -->
+        </div>
+
+        <!-- Tarabay's Market Products Page -->
+        <div id="tarabays-page" class="page hidden">
+            <!-- @COMPONENT: MerchantHeader -->
+            <div class="flex items-center mb-8">
+                <button onclick="showPage('home')" class="mr-4 text-shoufly-blue hover:text-blue-600">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Tarabay's Market</h1>
+                    <p class="text-gray-600">Fresh groceries and everyday essentials</p>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: MerchantHeader -->
+
+            <!-- @COMPONENT: PaymentInfo -->
+            <div class="bg-shoufly-green/10 border border-shoufly-green/20 rounded-lg p-4 mb-8">
+                <div class="flex items-center">
+                    <i class="fas fa-truck text-shoufly-green mr-3"></i>
+                    <span class="text-shoufly-green font-medium">Cash on Delivery Available</span>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: PaymentInfo -->
+
+            <!-- @COMPONENT: ProductsGrid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-apple-alt text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Fresh Apples (1kg)</h3>
+                        <p class="text-2xl font-bold text-shoufly-blue mb-4" data-mock="true">$4.99</p>
+                        <button class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-bread-slice text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Whole Wheat Bread</h3>
+                        <p class="text-2xl font-bold text-shoufly-blue mb-4" data-mock="true">$2.49</p>
+                        <button class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-cheese text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Organic Milk (1L)</h3>
+                        <p class="text-2xl font-bold text-shoufly-blue mb-4" data-mock="true">$3.29</p>
+                        <button class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: ProductsGrid -->
+        </div>
+
+        <!-- Coop Dmit Products Page -->
+        <div id="coopdmit-page" class="page hidden">
+            <div class="flex items-center mb-8">
+                <button onclick="showPage('home')" class="mr-4 text-shoufly-blue hover:text-blue-600">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Coop Dmit</h1>
+                    <p class="text-gray-600">Convenience store with general goods</p>
+                </div>
+            </div>
+
+            <div class="bg-shoufly-green/10 border border-shoufly-green/20 rounded-lg p-4 mb-8">
+                <div class="flex items-center">
+                    <i class="fas fa-truck text-shoufly-green mr-3"></i>
+                    <span class="text-shoufly-green font-medium">Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-cookie-bite text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Snack Mix Pack</h3>
+                        <p class="text-2xl font-bold text-shoufly-blue mb-4" data-mock="true">$6.99</p>
+                        <button class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-battery-three-quarters text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">AA Batteries (4-pack)</h3>
+                        <p class="text-2xl font-bold text-shoufly-blue mb-4" data-mock="true">$8.49</p>
+                        <button class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-toilet-paper text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Tissue Box</h3>
+                        <p class="text-2xl font-bold text-shoufly-blue mb-4" data-mock="true">$3.99</p>
+                        <button class="w-full bg-shoufly-blue text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Afran AlBassam Products Page -->
+        <div id="afran-page" class="page hidden">
+            <div class="flex items-center mb-8">
+                <button onclick="showPage('home')" class="mr-4 text-shoufly-blue hover:text-blue-600">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Afran AlBassam</h1>
+                    <p class="text-gray-600">Traditional Lebanese bakery</p>
+                </div>
+            </div>
+
+            <div class="bg-shoufly-green/10 border border-shoufly-green/20 rounded-lg p-4 mb-8">
+                <div class="flex items-center">
+                    <i class="fas fa-truck text-shoufly-green mr-3"></i>
+                    <span class="text-shoufly-green font-medium">Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-bread-slice text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Za'atar Manoushe</h3>
+                        <p class="text-2xl font-bold text-shoufly-green mb-4" data-mock="true">$4.50</p>
+                        <button class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-cheese text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Cheese Fatayer</h3>
+                        <p class="text-2xl font-bold text-shoufly-green mb-4" data-mock="true">$5.25</p>
+                        <button class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-seedling text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Spinach Pie</h3>
+                        <p class="text-2xl font-bold text-shoufly-green mb-4" data-mock="true">$4.75</p>
+                        <button class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abir's Pharmacy Products Page -->
+        <div id="abirs-page" class="page hidden">
+            <div class="flex items-center mb-8">
+                <button onclick="showPage('home')" class="mr-4 text-shoufly-blue hover:text-blue-600">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Abir's Pharmacy</h1>
+                    <p class="text-gray-600">Health and wellness products</p>
+                </div>
+            </div>
+
+            <div class="bg-shoufly-green/10 border border-shoufly-green/20 rounded-lg p-4 mb-8">
+                <div class="flex items-center">
+                    <i class="fas fa-truck text-shoufly-green mr-3"></i>
+                    <span class="text-shoufly-green font-medium">Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-pills text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Vitamin C Tablets</h3>
+                        <p class="text-2xl font-bold text-shoufly-green mb-4" data-mock="true">$12.99</p>
+                        <button class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-band-aid text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">First Aid Kit</h3>
+                        <p class="text-2xl font-bold text-shoufly-green mb-4" data-mock="true">$24.99</p>
+                        <button class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center" data-mock-image="true">
+                        <i class="fas fa-thermometer text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2" data-mock="true">Digital Thermometer</h3>
+                        <p class="text-2xl font-bold text-shoufly-green mb-4" data-mock="true">$18.50</p>
+                        <button class="w-full bg-shoufly-green text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- @END_COMPONENT: MainContent -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 Shoufly. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        (function() {
+            // Page navigation functionality
+            function showPage(pageId) {
+                // Hide all pages
+                const pages = document.querySelectorAll('.page');
+                pages.forEach(page => page.classList.add('hidden'));
+                
+                // Show the requested page
+                const targetPage = document.getElementById(pageId + '-page');
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+
+            function showMerchantPage(merchantId) {
+                showPage(merchantId);
+            }
+
+            // Make functions globally available
+            window.showPage = showPage;
+            window.showMerchantPage = showMerchantPage;
+
+            // Add to cart functionality (placeholder)
+            document.addEventListener('click', function(e) {
+                if (e.target.textContent === 'Add to Cart') {
+                    // TODO: Implement add to cart functionality
+                    e.target.textContent = 'Added!';
+                    e.target.classList.add('bg-green-600');
+                    setTimeout(() => {
+                        e.target.textContent = 'Add to Cart';
+                        e.target.classList.remove('bg-green-600');
+                    }, 1000);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

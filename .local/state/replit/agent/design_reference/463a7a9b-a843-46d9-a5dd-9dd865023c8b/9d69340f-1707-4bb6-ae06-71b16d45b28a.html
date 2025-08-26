@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoufly - Local Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        'shoufly-blue': '#3B82F6',
+                        'shoufly-green': '#10B981',
+                        'shoufly-gray': '#6B7280'
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-shoufly-blue cursor-pointer" onclick="showHome()">Shoufly</h1>
+                </div>
+                <div class="text-sm text-gray-600">
+                    <span id="breadcrumb">Local Marketplace</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Home Page - Merchant Listings -->
+        <div id="home-page" class="page-section">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Discover Local Merchants</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Shop from your favorite local stores and discover new products in your neighborhood</p>
+            </div>
+
+            <!-- Merchant Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Merchant Card 1: Tarabay's Market -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <!-- Fresh produce and grocery store interior -->
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Fresh produce and grocery items" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Tarabay's Market</h3>
+                        <p class="text-gray-600 mb-4">Fresh groceries, organic produce, and daily essentials</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-shoufly-green font-medium">Open Now</span>
+                            <button onclick="showProducts('tarabays')" class="bg-shoufly-blue text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 font-medium">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merchant Card 2: Coop Dmit -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <!-- Modern cooperative store with various products -->
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Modern cooperative store interior" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Coop Dmit</h3>
+                        <p class="text-gray-600 mb-4">Community cooperative with local products and sustainable goods</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-shoufly-green font-medium">Open Now</span>
+                            <button onclick="showProducts('coop')" class="bg-shoufly-blue text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 font-medium">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merchant Card 3: Afran AlBassam -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <!-- Traditional Middle Eastern store with spices and goods -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Traditional Middle Eastern spice market" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Afran AlBassam</h3>
+                        <p class="text-gray-600 mb-4">Authentic Middle Eastern spices, grains, and specialty foods</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-shoufly-green font-medium">Open Now</span>
+                            <button onclick="showProducts('afran')" class="bg-shoufly-blue text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 font-medium">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merchant Card 4: Abir's Pharmacy -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <!-- Modern pharmacy interior with medical supplies -->
+                    <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Modern pharmacy with medical supplies" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Abir's Pharmacy</h3>
+                        <p class="text-gray-600 mb-4">Prescription medications, health products, and wellness items</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-shoufly-green font-medium">Open Now</span>
+                            <button onclick="showProducts('abirs')" class="bg-shoufly-blue text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200 font-medium">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8">Why Shop with Shoufly?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 bg-shoufly-blue rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏪</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Local Merchants</h4>
+                        <p class="text-gray-600">Support your community by shopping from local businesses</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 bg-shoufly-green rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🚀</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Fast Delivery</h4>
+                        <p class="text-gray-600">Quick and reliable delivery to your doorstep</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 bg-shoufly-blue rounded-full flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">💳</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Secure Payment</h4>
+                        <p class="text-gray-600">Safe and secure payment processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarabay's Market Products Page -->
+        <div id="tarabays-page" class="page-section hidden">
+            <div class="mb-8">
+                <button onclick="showHome()" class="text-shoufly-blue hover:text-blue-600 font-medium mb-4">← Back to Merchants</button>
+                <div class="flex items-center gap-4 mb-6">
+                    <!-- Fresh produce and grocery store storefront -->
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Tarabay's Market storefront" class="w-16 h-16 rounded-full object-cover" data-mock-image="true">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Tarabay's Market</h2>
+                        <p class="text-gray-600">Fresh groceries, organic produce, and daily essentials</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Fresh organic apples -->
+                    <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Fresh organic red apples" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Organic Red Apples</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Fresh, crisp organic apples from local farms</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$4.99/lb</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Fresh bread loaves -->
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Fresh artisan bread loaves" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Artisan Sourdough Bread</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Freshly baked daily using traditional methods</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$6.50</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Fresh vegetables -->
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Fresh mixed vegetables" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Mixed Seasonal Vegetables</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Locally sourced seasonal vegetable mix</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$12.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Organic milk -->
+                    <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Glass bottles of organic milk" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Organic Whole Milk</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Farm fresh organic milk in glass bottles</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$5.25</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Fresh herbs -->
+                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Fresh herbs in pots" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Fresh Herb Garden Mix</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Basil, oregano, thyme, and parsley combo</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$8.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Organic eggs -->
+                    <img src="https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Organic free-range eggs" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Free-Range Organic Eggs</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Dozen fresh eggs from free-range chickens</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$7.50</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coop Dmit Products Page -->
+        <div id="coop-page" class="page-section hidden">
+            <div class="mb-8">
+                <button onclick="showHome()" class="text-shoufly-blue hover:text-blue-600 font-medium mb-4">← Back to Merchants</button>
+                <div class="flex items-center gap-4 mb-6">
+                    <!-- Modern cooperative store exterior -->
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Coop Dmit storefront" class="w-16 h-16 rounded-full object-cover" data-mock-image="true">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Coop Dmit</h2>
+                        <p class="text-gray-600">Community cooperative with local products and sustainable goods</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Eco-friendly cleaning products -->
+                    <img src="https://pixabay.com/get/g2c64623b2264cbd9307b0fbcb54ce8b4434c6bac0026a7bb87845dbff8d202deb908482504e9ef9600c30f4d60e2a87055f1798cece5ddd5726682dba997c6f9_1280.jpg" alt="Eco-friendly cleaning products" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Eco-Friendly Cleaning Kit</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Natural, biodegradable household cleaners</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$24.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Local honey jars -->
+                    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Local honey in glass jars" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Local Wildflower Honey</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Raw honey from local beekeepers</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$15.50</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Handmade soap bars -->
+                    <img src="https://pixabay.com/get/g1a7176157bdc979a296958f1786c5d0b4347bfa6ad8c31fe0e0e438cd8df4da3700611e25a1ff851fc69b897e6852624d532cb5d11aacb2b91d93dfc7719ef83_1280.jpg" alt="Handmade natural soap bars" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Artisan Soap Collection</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Handcrafted natural soap with essential oils</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$18.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Reusable shopping bags -->
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Reusable canvas shopping bags" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Canvas Shopping Bags</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Durable, reusable bags for sustainable shopping</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$12.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Afran AlBassam Products Page -->
+        <div id="afran-page" class="page-section hidden">
+            <div class="mb-8">
+                <button onclick="showHome()" class="text-shoufly-blue hover:text-blue-600 font-medium mb-4">← Back to Merchants</button>
+                <div class="flex items-center gap-4 mb-6">
+                    <!-- Traditional Middle Eastern spice market -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Afran AlBassam spice shop" class="w-16 h-16 rounded-full object-cover" data-mock-image="true">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Afran AlBassam</h2>
+                        <p class="text-gray-600">Authentic Middle Eastern spices, grains, and specialty foods</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Various colorful spices -->
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Colorful Middle Eastern spices" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Premium Spice Collection</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Authentic blend of Middle Eastern spices</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$29.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Basmati rice -->
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Premium basmati rice grains" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Premium Basmati Rice</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Long grain aromatic basmati rice, 5kg bag</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$22.50</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Dates and dried fruits -->
+                    <img src="https://images.unsplash.com/photo-1578849278619-e73505e9610f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Premium Medjool dates" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Medjool Dates</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Premium quality soft Medjool dates</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$16.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Za'atar blend -->
+                    <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Traditional za'atar spice blend" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Authentic Za'atar Blend</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Traditional Middle Eastern herb and spice blend</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$8.75</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abir's Pharmacy Products Page -->
+        <div id="abirs-page" class="page-section hidden">
+            <div class="mb-8">
+                <button onclick="showHome()" class="text-shoufly-blue hover:text-blue-600 font-medium mb-4">← Back to Merchants</button>
+                <div class="flex items-center gap-4 mb-6">
+                    <!-- Modern pharmacy interior -->
+                    <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Abir's Pharmacy storefront" class="w-16 h-16 rounded-full object-cover" data-mock-image="true">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Abir's Pharmacy</h2>
+                        <p class="text-gray-600">Prescription medications, health products, and wellness items</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Vitamins and supplements -->
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Various vitamin and supplement bottles" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Multivitamin Complex</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Daily multivitamin for adults, 90 tablets</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$19.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- First aid supplies -->
+                    <img src="https://pixabay.com/get/g5f18c4b01a146f71912ceda06884caf2e69d4ebfc1bb84116242f94ac9a93ffb62bf5b23cb0888143e0d41d64cd2d932cd3addbb4d3dcb4b8672119c486ef29c_1280.jpg" alt="First aid kit and medical supplies" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Complete First Aid Kit</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Essential medical supplies for home and travel</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$34.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Blood pressure monitor -->
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Digital blood pressure monitor" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Digital Blood Pressure Monitor</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Automatic upper arm blood pressure cuff</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$79.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Thermometer and health monitoring -->
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" alt="Digital thermometer and health monitoring devices" class="w-full h-48 object-cover" data-mock-image="true">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2" data-bind="product.name">Infrared Digital Thermometer</h3>
+                        <p class="text-gray-600 text-sm mb-3" data-mock="true">Non-contact forehead thermometer with LCD display</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-shoufly-blue" data-bind="product.price">$45.99</span>
+                            <button class="bg-shoufly-green text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Shoufly</h3>
+                <p class="text-gray-600 mb-4">Supporting local businesses, connecting communities</p>
+                <div class="text-sm text-gray-500">
+                    <span>© 2024 Shoufly. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple page navigation system
+        (function() {
+            const pages = ['home', 'tarabays', 'coop', 'afran', 'abirs'];
+            
+            function hideAllPages() {
+                pages.forEach(page => {
+                    const element = document.getElementById(page + '-page');
+                    if (element) {
+                        element.classList.add('hidden');
+                    }
+                });
+            }
+            
+            function updateBreadcrumb(merchantName) {
+                const breadcrumb = document.getElementById('breadcrumb');
+                if (merchantName) {
+                    breadcrumb.textContent = `${merchantName} Products`;
+                } else {
+                    breadcrumb.textContent = 'Local Marketplace';
+                }
+            }
+            
+            // Global functions for navigation
+            window.showHome = function() {
+                hideAllPages();
+                document.getElementById('home-page').classList.remove('hidden');
+                updateBreadcrumb('');
+                window.scrollTo(0, 0);
+            };
+            
+            window.showProducts = function(store) {
+                hideAllPages();
+                const storeNames = {
+                    'tarabays': "Tarabay's Market",
+                    'coop': 'Coop Dmit',
+                    'afran': 'Afran AlBassam',
+                    'abirs': "Abir's Pharmacy"
+                };
+                document.getElementById(store + '-page').classList.remove('hidden');
+                updateBreadcrumb(storeNames[store]);
+                window.scrollTo(0, 0);
+            };
+            
+            // Initialize with home page visible
+            showHome();
+        })();
+
+        // TODO: Implement shopping cart functionality
+        // TODO: Implement user authentication
+        // TODO: Implement actual product data loading from API
+        // TODO: Implement payment processing
+        // TODO: Implement order management system
+    </script>
+</body>
+</html>

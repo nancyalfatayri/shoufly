@@ -1,0 +1,577 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoufly - Local Merchants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007AFF',
+                        secondary: '#34C759',
+                        surface: '#FFFFFF',
+                        background: '#F2F2F7',
+                        textPrimary: '#1C1C1E',
+                        textSecondary: '#8E8E93'
+                    },
+                    fontFamily: {
+                        'system': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-background font-system text-textPrimary">
+    <!-- Header with Navigation -->
+    <header class="bg-surface shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo and Brand -->
+                <div class="flex items-center cursor-pointer" onclick="showHomePage()">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">S</span>
+                        </div>
+                        <h1 class="text-xl font-semibold text-textPrimary">Shoufly</h1>
+                    </div>
+                </div>
+                
+                <!-- Back Button (Hidden on home page) -->
+                <button id="backButton" class="hidden bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-medium" onclick="showHomePage()">
+                    ← Back to Merchants
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Home Page - Merchant Listings -->
+        <div id="homePage">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-textPrimary mb-4">Local Merchants</h2>
+                <p class="text-lg text-textSecondary max-w-2xl mx-auto">Browse products from your favorite local stores. All orders are delivered with cash on delivery payment.</p>
+            </div>
+
+            <!-- Cash on Delivery Notice -->
+            <div class="bg-secondary/10 border border-secondary/20 rounded-xl p-6 mb-8 text-center">
+                <div class="flex items-center justify-center mb-2">
+                    <span class="text-2xl mr-2">💵</span>
+                    <h3 class="text-lg font-semibold text-textPrimary">Cash on Delivery Only</h3>
+                </div>
+                <p class="text-textSecondary">Pay when your order arrives at your doorstep</p>
+            </div>
+
+            <!-- Merchants Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <!-- @COMPONENT: MerchantCard [name, description, category] -->
+                
+                <!-- Merchant 1: Tarabay's Market -->
+                <div class="bg-surface rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="mb-4">
+                        <!-- Fresh groceries and produce with vibrant colors -->
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                             alt="Fresh groceries and produce" 
+                             class="w-full h-32 object-cover rounded-lg mb-4" />
+                        <h3 class="text-xl font-semibold mb-2">Tarabay's Market</h3>
+                        <p class="text-textSecondary mb-1">Fresh Groceries & Produce</p>
+                        <p class="text-sm text-textSecondary">Fresh fruits, vegetables, and daily essentials</p>
+                    </div>
+                    <button onclick="showMerchantPage('tarabays')" 
+                            class="w-full bg-primary hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200">
+                        Browse Products
+                    </button>
+                </div>
+
+                <!-- Merchant 2: Coop Dmit -->
+                <div class="bg-surface rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="mb-4">
+                        <!-- Modern cooperative store interior -->
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                             alt="Modern cooperative store interior" 
+                             class="w-full h-32 object-cover rounded-lg mb-4" />
+                        <h3 class="text-xl font-semibold mb-2">Coop Dmit</h3>
+                        <p class="text-textSecondary mb-1">Cooperative Store</p>
+                        <p class="text-sm text-textSecondary">Community-focused grocery and household items</p>
+                    </div>
+                    <button onclick="showMerchantPage('coopdmit')" 
+                            class="w-full bg-primary hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200">
+                        Browse Products
+                    </button>
+                </div>
+
+                <!-- Merchant 3: Afran AlBassam -->
+                <div class="bg-surface rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="mb-4">
+                        <!-- Traditional Middle Eastern marketplace -->
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                             alt="Traditional Middle Eastern marketplace" 
+                             class="w-full h-32 object-cover rounded-lg mb-4" />
+                        <h3 class="text-xl font-semibold mb-2">Afran AlBassam</h3>
+                        <p class="text-textSecondary mb-1">Traditional Market</p>
+                        <p class="text-sm text-textSecondary">Authentic spices, grains, and traditional foods</p>
+                    </div>
+                    <button onclick="showMerchantPage('afran')" 
+                            class="w-full bg-primary hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200">
+                        Browse Products
+                    </button>
+                </div>
+
+                <!-- Merchant 4: Abir's Pharmacy -->
+                <div class="bg-surface rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="mb-4">
+                        <!-- Modern pharmacy interior with medical supplies -->
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                             alt="Modern pharmacy interior with medical supplies" 
+                             class="w-full h-32 object-cover rounded-lg mb-4" />
+                        <h3 class="text-xl font-semibold mb-2">Abir's Pharmacy</h3>
+                        <p class="text-textSecondary mb-1">Health & Wellness</p>
+                        <p class="text-sm text-textSecondary">Medications, health products, and wellness items</p>
+                    </div>
+                    <button onclick="showMerchantPage('abirs')" 
+                            class="w-full bg-primary hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200">
+                        Browse Products
+                    </button>
+                </div>
+                
+                <!-- @END_COMPONENT: MerchantCard -->
+            </div>
+        </div>
+
+        <!-- Merchant Pages (Initially Hidden) -->
+        
+        <!-- Tarabay's Market Products -->
+        <div id="tarabaysPage" class="hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">Tarabay's Market</h2>
+                <p class="text-textSecondary">Fresh groceries and daily essentials</p>
+                
+                <!-- Cash on Delivery Notice -->
+                <div class="bg-secondary/10 border border-secondary/20 rounded-lg p-4 mt-4 inline-block">
+                    <span class="text-secondary font-medium">💵 Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <!-- @MAP: products.map(product => ( -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Fresh red apples in a basket -->
+                    <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Fresh red apples" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Fresh Apples</h4>
+                        <p class="text-sm text-textSecondary mb-2">1kg</p>
+                        <p class="text-lg font-bold text-primary">$3.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Assorted fresh vegetables -->
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Assorted fresh vegetables" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Mixed Vegetables</h4>
+                        <p class="text-sm text-textSecondary mb-2">1kg bundle</p>
+                        <p class="text-lg font-bold text-primary">$5.49</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Fresh milk bottles -->
+                    <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Fresh milk bottles" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Fresh Milk</h4>
+                        <p class="text-sm text-textSecondary mb-2">1 liter</p>
+                        <p class="text-lg font-bold text-primary">$2.29</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Artisan bread loaves -->
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Artisan bread loaves" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Fresh Bread</h4>
+                        <p class="text-sm text-textSecondary mb-2">1 loaf</p>
+                        <p class="text-lg font-bold text-primary">$1.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Fresh eggs in carton -->
+                    <img src="https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Fresh eggs in carton" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Farm Eggs</h4>
+                        <p class="text-sm text-textSecondary mb-2">12 pieces</p>
+                        <p class="text-lg font-bold text-primary">$3.49</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Ripe bananas bunch -->
+                    <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Ripe bananas bunch" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Bananas</h4>
+                        <p class="text-sm text-textSecondary mb-2">1kg</p>
+                        <p class="text-lg font-bold text-primary">$2.79</p>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+        </div>
+
+        <!-- Coop Dmit Products -->
+        <div id="coopdmitPage" class="hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">Coop Dmit</h2>
+                <p class="text-textSecondary">Community cooperative store</p>
+                
+                <div class="bg-secondary/10 border border-secondary/20 rounded-lg p-4 mt-4 inline-block">
+                    <span class="text-secondary font-medium">💵 Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Pasta packages on shelf -->
+                    <img src="https://pixabay.com/get/g1e8d94827f5755708774d2c80a1fb6c9d278e44a9d88d6201d844db22566b47830856a72b4faf4b20fc050e3e591b6c7c9ec1f523fd8a33e102e356bdb1deccf_1280.jpg" 
+                         alt="Pasta packages" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Pasta</h4>
+                        <p class="text-sm text-textSecondary mb-2">500g</p>
+                        <p class="text-lg font-bold text-primary">$1.89</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Canned goods variety -->
+                    <img src="https://pixabay.com/get/ge1b784110634ceb12f8f6bbf2f2ee7dbb60b48acc56021a8e10eb111e325b8f60b8009ce921ded8ef4ee4efca5bf9e0365675683787ae85e00f5fe219230f5ce_1280.jpg" 
+                         alt="Canned goods variety" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Canned Tomatoes</h4>
+                        <p class="text-sm text-textSecondary mb-2">400g</p>
+                        <p class="text-lg font-bold text-primary">$1.29</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Rice bags in store -->
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Rice bags" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Rice</h4>
+                        <p class="text-sm text-textSecondary mb-2">2kg</p>
+                        <p class="text-lg font-bold text-primary">$4.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Olive oil bottles -->
+                    <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Olive oil bottles" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Olive Oil</h4>
+                        <p class="text-sm text-textSecondary mb-2">500ml</p>
+                        <p class="text-lg font-bold text-primary">$6.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Cleaning supplies -->
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Cleaning supplies" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">All-Purpose Cleaner</h4>
+                        <p class="text-sm text-textSecondary mb-2">1 liter</p>
+                        <p class="text-lg font-bold text-primary">$3.49</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Laundry detergent -->
+                    <img src="https://pixabay.com/get/g6bc15d26bde66912d4671cea24c5a62b1728c183aee767912927e4459d33691aff30f5b49d20df671f6a3d6334e322c4fdf57b920601ed2ac453142a23e3569d_1280.jpg" 
+                         alt="Laundry detergent" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Laundry Detergent</h4>
+                        <p class="text-sm text-textSecondary mb-2">2kg</p>
+                        <p class="text-lg font-bold text-primary">$8.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Afran AlBassam Products -->
+        <div id="afranPage" class="hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">Afran AlBassam</h2>
+                <p class="text-textSecondary">Traditional spices and authentic foods</p>
+                
+                <div class="bg-secondary/10 border border-secondary/20 rounded-lg p-4 mt-4 inline-block">
+                    <span class="text-secondary font-medium">💵 Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Colorful spices in bowls -->
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Colorful spices in bowls" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Spice Mix</h4>
+                        <p class="text-sm text-textSecondary mb-2">100g</p>
+                        <p class="text-lg font-bold text-primary">$4.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Saffron threads close-up -->
+                    <img src="https://pixabay.com/get/g75c06596630c055aa183f560ce9ef43ba0d68d53b797c5b8b2aae71392b02329af14d9abb684b364236d635bcd4e62b49bae9098b9bb0846ad53fcedf5b89608_1280.jpg" 
+                         alt="Saffron threads" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Saffron</h4>
+                        <p class="text-sm text-textSecondary mb-2">5g</p>
+                        <p class="text-lg font-bold text-primary">$12.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Dates in traditional setting -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Fresh dates" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Medjool Dates</h4>
+                        <p class="text-sm text-textSecondary mb-2">500g</p>
+                        <p class="text-lg font-bold text-primary">$8.49</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Traditional nuts and dried fruits -->
+                    <img src="https://pixabay.com/get/ge4740e9b799896c7bb103620437339b6f2821bf865b205bfa53e1f321a245b5a3e7a742524755bf1f3a59baa35ea2555e022d0e0db13ddf9f6bff513e9ca9db6_1280.jpg" 
+                         alt="Mixed nuts and dried fruits" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Mixed Nuts</h4>
+                        <p class="text-sm text-textSecondary mb-2">250g</p>
+                        <p class="text-lg font-bold text-primary">$6.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Basmati rice in traditional packaging -->
+                    <img src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Basmati rice" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Basmati Rice</h4>
+                        <p class="text-sm text-textSecondary mb-2">2kg</p>
+                        <p class="text-lg font-bold text-primary">$7.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Traditional tea leaves -->
+                    <img src="https://pixabay.com/get/gb2976a14e7825cf33dedec1e2be76cbfebe76c46c1c8d88188fd20374dc693ff781520605f29e4a1bcf3f54244efbe6798ff04b48296f6186916cf9a1a8b565d_1280.jpg" 
+                         alt="Traditional tea leaves" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Black Tea</h4>
+                        <p class="text-sm text-textSecondary mb-2">200g</p>
+                        <p class="text-lg font-bold text-primary">$3.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abir's Pharmacy Products -->
+        <div id="abirsPage" class="hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">Abir's Pharmacy</h2>
+                <p class="text-textSecondary">Health and wellness products</p>
+                
+                <div class="bg-secondary/10 border border-secondary/20 rounded-lg p-4 mt-4 inline-block">
+                    <span class="text-secondary font-medium">💵 Cash on Delivery Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Vitamin bottles on pharmacy shelf -->
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Vitamin bottles" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Multivitamins</h4>
+                        <p class="text-sm text-textSecondary mb-2">30 tablets</p>
+                        <p class="text-lg font-bold text-primary">$12.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Pain relief medication -->
+                    <img src="https://pixabay.com/get/g1ae351ead344dfd9ad738f19e4c55a2917f94a8ebdd6f666d5d1a3390a47da458e899b52c9170352c5bf9f887c2045a805d9e0a180352490bdf4a0f675f9e083_1280.jpg" 
+                         alt="Pain relief medication" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Pain Relief</h4>
+                        <p class="text-sm text-textSecondary mb-2">20 tablets</p>
+                        <p class="text-lg font-bold text-primary">$7.49</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- First aid supplies -->
+                    <img src="https://pixabay.com/get/g5f18c4b01a146f71912ceda06884caf2e69d4ebfc1bb84116242f94ac9a93ffb62bf5b23cb0888143e0d41d64cd2d932cd3addbb4d3dcb4b8672119c486ef29c_1280.jpg" 
+                         alt="First aid supplies" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">First Aid Kit</h4>
+                        <p class="text-sm text-textSecondary mb-2">Complete set</p>
+                        <p class="text-lg font-bold text-primary">$24.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Thermometer and health monitoring -->
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Digital thermometer" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Digital Thermometer</h4>
+                        <p class="text-sm text-textSecondary mb-2">1 piece</p>
+                        <p class="text-lg font-bold text-primary">$15.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Hand sanitizer bottles -->
+                    <img src="https://images.unsplash.com/photo-1584744982491-665216d95f8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Hand sanitizer bottles" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Hand Sanitizer</h4>
+                        <p class="text-sm text-textSecondary mb-2">250ml</p>
+                        <p class="text-lg font-bold text-primary">$4.99</p>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <!-- Medical face masks -->
+                    <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                         alt="Medical face masks" 
+                         class="w-full h-40 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-1">Face Masks</h4>
+                        <p class="text-sm text-textSecondary mb-2">50 pieces</p>
+                        <p class="text-lg font-bold text-primary">$19.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-gray-200 mt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-6 h-6 bg-primary rounded flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">S</span>
+                    </div>
+                    <span class="text-lg font-semibold">Shoufly</span>
+                </div>
+                <p class="text-textSecondary text-sm">Your local merchants, delivered to your door</p>
+                <p class="text-textSecondary text-xs mt-2">💵 Cash on Delivery • 📱 Easy Ordering • 🚚 Local Delivery</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation Functions
+        (function() {
+            // TODO: Implement proper routing and state management for production
+            
+            function showHomePage() {
+                // Hide all merchant pages
+                document.getElementById('tarabaysPage').classList.add('hidden');
+                document.getElementById('coopdmitPage').classList.add('hidden');
+                document.getElementById('afranPage').classList.add('hidden');
+                document.getElementById('abirsPage').classList.add('hidden');
+                
+                // Show home page
+                document.getElementById('homePage').classList.remove('hidden');
+                
+                // Hide back button
+                document.getElementById('backButton').classList.add('hidden');
+                
+                // Update page title
+                document.title = 'Shoufly - Local Merchants';
+            }
+
+            function showMerchantPage(merchantId) {
+                // Hide home page
+                document.getElementById('homePage').classList.add('hidden');
+                
+                // Hide all other merchant pages
+                const merchantPages = ['tarabaysPage', 'coopdmitPage', 'afranPage', 'abirsPage'];
+                merchantPages.forEach(pageId => {
+                    document.getElementById(pageId).classList.add('hidden');
+                });
+                
+                // Show selected merchant page
+                const pageId = merchantId + 'Page';
+                document.getElementById(pageId).classList.remove('hidden');
+                
+                // Show back button
+                document.getElementById('backButton').classList.remove('hidden');
+                
+                // Update page title based on merchant
+                const merchantNames = {
+                    'tarabays': "Tarabay's Market",
+                    'coopdmit': 'Coop Dmit',
+                    'afran': 'Afran AlBassam',
+                    'abirs': "Abir's Pharmacy"
+                };
+                document.title = `${merchantNames[merchantId]} - Shoufly`;
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+
+            // Make functions available globally
+            window.showHomePage = showHomePage;
+            window.showMerchantPage = showMerchantPage;
+        })();
+    </script>
+
+</body>
+</html>

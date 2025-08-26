@@ -1,0 +1,432 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoufly - Local Merchants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-inter bg-slate-50 min-h-screen">
+    <!-- @COMPONENT: Header [logo, navigation] -->
+    <header class="bg-white shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shopping-bag text-white text-sm"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-900">Shoufly</span>
+                </div>
+                <nav id="main-nav" class="hidden sm:flex space-x-6">
+                    <button onclick="showPage('home')" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">Home</button>
+                    <button class="text-slate-400">About</button>
+                    <button class="text-slate-400">Contact</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: MainPage [merchant listings] -->
+    <main id="home-page" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Local Merchants</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Discover fresh products and essential items from trusted local merchants in your neighborhood.</p>
+        </div>
+
+        <!-- @MAP: merchants.map(merchant => ( -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Tarabay's Market -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                <!-- Fresh produce and vegetables displayed in a traditional market setting -->
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                     alt="Fresh produce market" 
+                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     data-mock-image="true" />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-bind="merchant.name">Tarabay's Market</h3>
+                    <p class="text-slate-600 mb-4 text-sm" data-mock="true">Fresh produce, groceries, and daily essentials</p>
+                    <button onclick="showMerchantPage('tarabays')" 
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                            data-event="click:navigateToStore">
+                        View Products
+                    </button>
+                </div>
+            </div>
+
+            <!-- Coop Dmit -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                <!-- Interior view of a modern convenience store with organized shelves -->
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                     alt="Convenience store interior" 
+                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     data-mock-image="true" />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-bind="merchant.name">Coop Dmit</h3>
+                    <p class="text-slate-600 mb-4 text-sm" data-mock="true">Convenience store with general goods and snacks</p>
+                    <button onclick="showMerchantPage('coop')" 
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                            data-event="click:navigateToStore">
+                        View Products
+                    </button>
+                </div>
+            </div>
+
+            <!-- Afran AlBassam -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                <!-- Traditional Lebanese man'oushe flatbread with za'atar and olive oil -->
+                <img src="https://pixabay.com/get/gd710b9ced3c7d91313941bfbcd170f653c9af05edbb23f2a5cf873b276e7f4c3c3477595ded194736524e92ed46d5618307e224b912758a350848e5d80efd0e5_1280.jpg" 
+                     alt="Lebanese man'oushe flatbread" 
+                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     data-mock-image="true" />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-bind="merchant.name">Afran AlBassam</h3>
+                    <p class="text-slate-600 mb-4 text-sm" data-mock="true">Authentic Lebanese bakery and traditional foods</p>
+                    <button onclick="showMerchantPage('afran')" 
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                            data-event="click:navigateToStore">
+                        View Products
+                    </button>
+                </div>
+            </div>
+
+            <!-- Abir's Pharmacy -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                <!-- Clean modern pharmacy storefront with medical cross sign -->
+                <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                     alt="Modern pharmacy storefront" 
+                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     data-mock-image="true" />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-bind="merchant.name">Abir's Pharmacy</h3>
+                    <p class="text-slate-600 mb-4 text-sm" data-mock="true">Medications, health products, and wellness items</p>
+                    <button onclick="showMerchantPage('abirs')" 
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                            data-event="click:navigateToStore">
+                        View Products
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- @END_MAP )) -->
+    </main>
+    <!-- @END_COMPONENT: MainPage -->
+
+    <!-- @COMPONENT: MerchantPages [individual store pages] -->
+    <!-- Tarabay's Market Products -->
+    <div id="tarabays-page" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <button onclick="showPage('home')" class="text-blue-600 hover:text-blue-800 mb-4 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Merchants
+            </button>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Tarabay's Market</h1>
+            <p class="text-slate-600">Fresh produce, groceries, and daily essentials</p>
+        </div>
+
+        <!-- Cash on Delivery Info -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-8">
+            <div class="flex items-center">
+                <i class="fas fa-money-bill-wave text-emerald-600 mr-3"></i>
+                <span class="text-emerald-800 font-medium">Cash on Delivery Available</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product items -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Fresh organic tomatoes in a market basket -->
+                <img src="https://pixabay.com/get/gdcd7bf8a798cc015abc7fe5ed6abfa7296075ac4c5728d80b3692d1527fa16cab3dbfeeb46b832ddfb337520b24cfe09b214ae5a4c72abc9baeaa67d2e64e912_1280.jpg" 
+                     alt="Fresh tomatoes" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Fresh Tomatoes</h3>
+                    <p class="text-slate-600 text-sm">1 kg</p>
+                    <p class="text-blue-600 font-bold mt-2">$3.50</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Variety of fresh bell peppers in different colors -->
+                <img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Bell peppers" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Bell Peppers</h3>
+                    <p class="text-slate-600 text-sm">500g pack</p>
+                    <p class="text-blue-600 font-bold mt-2">$2.25</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Fresh green leafy lettuce heads -->
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Fresh lettuce" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Fresh Lettuce</h3>
+                    <p class="text-slate-600 text-sm">1 head</p>
+                    <p class="text-blue-600 font-bold mt-2">$1.80</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Assorted dairy products including milk and cheese -->
+                <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Dairy products" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Fresh Milk</h3>
+                    <p class="text-slate-600 text-sm">1 liter</p>
+                    <p class="text-blue-600 font-bold mt-2">$2.50</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coop Dmit Products -->
+    <div id="coop-page" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <button onclick="showPage('home')" class="text-blue-600 hover:text-blue-800 mb-4 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Merchants
+            </button>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Coop Dmit</h1>
+            <p class="text-slate-600">Convenience store with general goods and snacks</p>
+        </div>
+
+        <!-- Cash on Delivery Info -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-8">
+            <div class="flex items-center">
+                <i class="fas fa-money-bill-wave text-emerald-600 mr-3"></i>
+                <span class="text-emerald-800 font-medium">Cash on Delivery Available</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Variety of snack chips and crackers on shelf -->
+                <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Snack chips" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Potato Chips</h3>
+                    <p class="text-slate-600 text-sm">150g bag</p>
+                    <p class="text-blue-600 font-bold mt-2">$1.95</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Assorted soft drinks and beverages in cooler -->
+                <img src="https://pixabay.com/get/g1b45f7541c91e183791330db4f2f6750458a144322b364acc570704723f21fa3bd13e78bf6f329700303b5c8d91a0cdc50fd6e361f108401d03a1af158e1b654_1280.jpg" 
+                     alt="Soft drinks" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Soft Drinks</h3>
+                    <p class="text-slate-600 text-sm">330ml can</p>
+                    <p class="text-blue-600 font-bold mt-2">$1.25</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Selection of candy bars and chocolate -->
+                <img src="https://images.unsplash.com/photo-1499195333224-3ce974eecb47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Candy and chocolate" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Chocolate Bar</h3>
+                    <p class="text-slate-600 text-sm">50g bar</p>
+                    <p class="text-blue-600 font-bold mt-2">$2.10</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Instant noodles and quick meal options -->
+                <img src="https://images.unsplash.com/photo-1612927601601-6638404737ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Instant noodles" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Instant Noodles</h3>
+                    <p class="text-slate-600 text-sm">75g pack</p>
+                    <p class="text-blue-600 font-bold mt-2">$0.85</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Afran AlBassam Products -->
+    <div id="afran-page" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <button onclick="showPage('home')" class="text-blue-600 hover:text-blue-800 mb-4 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Merchants
+            </button>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Afran AlBassam</h1>
+            <p class="text-slate-600">Authentic Lebanese bakery and traditional foods</p>
+        </div>
+
+        <!-- Cash on Delivery Info -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-8">
+            <div class="flex items-center">
+                <i class="fas fa-money-bill-wave text-emerald-600 mr-3"></i>
+                <span class="text-emerald-800 font-medium">Cash on Delivery Available</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Traditional Lebanese za'atar man'oushe flatbread -->
+                <img src="https://pixabay.com/get/gb6f02b1d927d3db1101062ee59deae36a71be8f174c3cdef48898ed4fac3cfd1182d3963567026a97291f91348cdfc3e83bd71ac0f9a91fecd3edefec91ac1b7_1280.jpg" 
+                     alt="Za'atar man'oushe" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Za'atar Man'oushe</h3>
+                    <p class="text-slate-600 text-sm">Fresh baked</p>
+                    <p class="text-blue-600 font-bold mt-2">$3.00</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Lebanese cheese fatayer pastries -->
+                <img src="https://pixabay.com/get/gdc106555a05894151b5479387a26b912f8c44e3bc907b927954770a74f246ba4d8b4372ec1d60f8fcfb01ae861de5b6740eaf033dbf86db53acaeaa948983fc3_1280.jpg" 
+                     alt="Cheese fatayer" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Cheese Fatayer</h3>
+                    <p class="text-slate-600 text-sm">3 pieces</p>
+                    <p class="text-blue-600 font-bold mt-2">$4.50</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Traditional Lebanese pita bread -->
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Pita bread" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Fresh Pita Bread</h3>
+                    <p class="text-slate-600 text-sm">6 pieces</p>
+                    <p class="text-blue-600 font-bold mt-2">$2.75</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Middle Eastern baklava pastries -->
+                <img src="https://pixabay.com/get/gd4261abf2864471f3340ff63c40dd1a5416ce3d840a35f1ebcd935316bd9a53c89d0442abebcbf0ff0920cda96fdf37b87712361bca1ea1f00a1a065754f9ec7_1280.jpg" 
+                     alt="Baklava pastries" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Baklava</h3>
+                    <p class="text-slate-600 text-sm">4 pieces</p>
+                    <p class="text-blue-600 font-bold mt-2">$6.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Abir's Pharmacy Products -->
+    <div id="abirs-page" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <button onclick="showPage('home')" class="text-blue-600 hover:text-blue-800 mb-4 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Merchants
+            </button>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Abir's Pharmacy</h1>
+            <p class="text-slate-600">Medications, health products, and wellness items</p>
+        </div>
+
+        <!-- Cash on Delivery Info -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-8">
+            <div class="flex items-center">
+                <i class="fas fa-money-bill-wave text-emerald-600 mr-3"></i>
+                <span class="text-emerald-800 font-medium">Cash on Delivery Available</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Hand sanitizer bottles on pharmacy shelf -->
+                <img src="https://images.unsplash.com/photo-1584744982491-665216d95f8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Hand sanitizer" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Hand Sanitizer</h3>
+                    <p class="text-slate-600 text-sm">250ml bottle</p>
+                    <p class="text-blue-600 font-bold mt-2">$4.25</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Pack of medical face masks -->
+                <img src="https://pixabay.com/get/gd0ecae60b9013dee1b748278e89f64f4517f3b3b494ba5fd2cbe3ec68ebfab691c2bd00fd0ff0b94cef0f319fde142dfeade9dc71337d271dfa014adaa088d5f_1280.jpg" 
+                     alt="Face masks" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Face Masks</h3>
+                    <p class="text-slate-600 text-sm">Pack of 50</p>
+                    <p class="text-blue-600 font-bold mt-2">$12.99</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- Vitamin supplement bottles -->
+                <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                     alt="Vitamin supplements" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">Vitamin C</h3>
+                    <p class="text-slate-600 text-sm">60 tablets</p>
+                    <p class="text-blue-600 font-bold mt-2">$8.50</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-mock="true">
+                <!-- First aid kit and medical supplies -->
+                <img src="https://pixabay.com/get/gb99a464c161f14103e6aa76600ad1405f71504f6cb06a668d019009a775bfd2beb711e8b5abb68d6d7ac545f2c013653336f826b1fb0aaf6126b0943de0fcea9_1280.jpg" 
+                     alt="First aid kit" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                    <h3 class="font-semibold text-slate-900">First Aid Kit</h3>
+                    <p class="text-slate-600 text-sm">Basic supplies</p>
+                    <p class="text-blue-600 font-bold mt-2">$15.75</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: MerchantPages -->
+
+    <script>
+        // @STATE: currentPage:string = 'home'
+        
+        (function() {
+            // Page navigation functionality
+            function showPage(pageId) {
+                // Hide all pages
+                const pages = ['home-page', 'tarabays-page', 'coop-page', 'afran-page', 'abirs-page'];
+                pages.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.classList.add('hidden');
+                    }
+                });
+
+                // Show selected page
+                const targetPage = document.getElementById(pageId + '-page');
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
+            }
+
+            function showMerchantPage(merchantId) {
+                showPage(merchantId + 's'); // Convert to page ID format
+            }
+
+            // Make functions globally available
+            window.showPage = showPage;
+            window.showMerchantPage = showMerchantPage;
+
+            // Initialize with home page visible
+            showPage('home');
+        })();
+
+        // TODO: Implement business logic for:
+        // - Product cart functionality
+        // - Order processing
+        // - Payment integration
+        // - User authentication
+        // - Real-time inventory updates
+    </script>
+</body>
+</html>

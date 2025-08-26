@@ -1,0 +1,304 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoufly - Local Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'shoufly-blue': '#4A90B8',
+                        'shoufly-green': '#7CB342',
+                        'shoufly-light': '#E8F4FD'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- @COMPONENT: Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzRBOTBCOCIvPgo8cGF0aCBkPSJNMTIgMjhMMjggMTJNMjggMTJIMTZNMjggMTJWMjQiIHN0cm9rZT0iIzdDQjM0MiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjgiIGhlaWdodD0iNiIgcng9IjEiIGZpbGw9IiM0QTkwQjgiLz4KPC9zdmc+" alt="Shoufly Logo" class="h-10 w-10">
+                    <h1 class="text-2xl font-bold text-shoufly-blue">Shoufly</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-shoufly-blue transition-colors">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-shoufly-blue transition-colors">About</a>
+                    <a href="#" class="text-gray-700 hover:text-shoufly-blue transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- @COMPONENT: HeroSection -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Discover Local Merchants</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Shop from your favorite local stores and get everything delivered to your doorstep</p>
+        </div>
+        <!-- @END_COMPONENT: HeroSection -->
+
+        <!-- @COMPONENT: MerchantGrid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12" id="merchantGrid">
+            <!-- @COMPONENT: MerchantCard - Tarabay's Market -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <!-- A vibrant grocery market interior with fresh produce displays and colorful fruits and vegetables -->
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Tarabay's Market - Fresh grocery store interior" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Tarabay's Market</h3>
+                    <p class="text-gray-600 mb-4">Fresh groceries, organic produce, and daily essentials for your family</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-600">4.8 (124 reviews)</span>
+                        </div>
+                        <button onclick="showMerchantProducts('tarabay')" class="bg-shoufly-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: MerchantCard -->
+
+            <!-- @COMPONENT: MerchantCard - Coop Dmit -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <!-- A modern convenience store interior with organized shelves and various household items -->
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Coop Dmit - Convenience store interior" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Coop Dmit</h3>
+                    <p class="text-gray-600 mb-4">Your neighborhood convenience store with everyday essentials and snacks</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-600">4.6 (89 reviews)</span>
+                        </div>
+                        <button onclick="showMerchantProducts('coop')" class="bg-shoufly-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: MerchantCard -->
+
+            <!-- @COMPONENT: MerchantCard - Afran AlBassam -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <!-- Traditional Lebanese manoushe flatbread with za'atar and olive oil being prepared -->
+                <img src="https://pixabay.com/get/g084e1ba0eb77e35bb83d8c1889e4a48cc56b0c2490940a241f566b3860220d270d46dff7432540303234aef5ac408eecb9c9b65847e513697deba381e59dbc89_1280.jpg" alt="Afran AlBassam - Traditional Lebanese manoushe flatbread" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Afran AlBassam</h3>
+                    <p class="text-gray-600 mb-4">Authentic Lebanese bakery serving fresh manoushe, bread, and traditional pastries</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-600">4.9 (156 reviews)</span>
+                        </div>
+                        <button onclick="showMerchantProducts('afran')" class="bg-shoufly-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: MerchantCard -->
+
+            <!-- @COMPONENT: MerchantCard - Abir's Pharmacy -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <!-- Modern pharmacy storefront with clean white interior and organized medicine shelves -->
+                <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Abir's Pharmacy - Modern pharmacy interior" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Abir's Pharmacy</h3>
+                    <p class="text-gray-600 mb-4">Your trusted pharmacy for medications, health products, and wellness essentials</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="text-sm text-gray-600">4.7 (98 reviews)</span>
+                        </div>
+                        <button onclick="showMerchantProducts('abir')" class="bg-shoufly-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: MerchantCard -->
+        </div>
+        <!-- @END_COMPONENT: MerchantGrid -->
+    </main>
+
+    <!-- @COMPONENT: ProductsPage (Hidden by default) -->
+    <div id="productsPage" class="hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Back Navigation -->
+            <button onclick="showHomePage()" class="mb-6 flex items-center space-x-2 text-shoufly-blue hover:text-blue-600 transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Merchants</span>
+            </button>
+
+            <!-- Merchant Header -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <div class="flex items-center space-x-4 mb-4">
+                    <img id="merchantLogo" src="" alt="" class="w-16 h-16 rounded-lg object-cover">
+                    <div>
+                        <h1 id="merchantName" class="text-3xl font-bold text-gray-900"></h1>
+                        <p id="merchantDescription" class="text-gray-600"></p>
+                    </div>
+                </div>
+                
+                <!-- Cash on Delivery Info -->
+                <div class="bg-shoufly-light border border-shoufly-blue/20 rounded-lg p-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-money-bill-wave text-shoufly-blue"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Cash on Delivery Available</h3>
+                            <p class="text-sm text-gray-600">Pay when your order arrives at your doorstep</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: ProductsPage -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzRBOTBCOCIvPgo8cGF0aCBkPSJNMTIgMjhMMjggMTJNMjggMTJIMTZNMjggMTJWMjQiIHN0cm9rZT0iIzdDQjM0MiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjgiIGhlaWdodD0iNiIgcng9IjEiIGZpbGw9IiM0QTkwQjgiLz4KPC9zdmc+" alt="Shoufly Logo" class="h-8 w-8">
+                    <span class="text-lg font-semibold text-shoufly-blue">Shoufly</span>
+                </div>
+                <p class="text-gray-600 text-sm">© 2024 Shoufly. Connecting you with local merchants.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // Mock product data for each merchant
+        const merchantData = {
+            tarabay: {
+                name: "Tarabay's Market",
+                description: "Fresh groceries, organic produce, and daily essentials",
+                logo: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+                products: [
+                    { name: "Organic Bananas", price: "$3.99", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Fresh Tomatoes", price: "$2.49", image: "https://images.unsplash.com/photo-1546470427-e26264be0b3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Whole Wheat Bread", price: "$4.99", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Greek Yogurt", price: "$5.49", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Olive Oil", price: "$8.99", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Free Range Eggs", price: "$6.99", image: "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" }
+                ]
+            },
+            coop: {
+                name: "Coop Dmit",
+                description: "Your neighborhood convenience store with everyday essentials",
+                logo: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+                products: [
+                    { name: "Energy Drinks", price: "$2.99", image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Snack Mix", price: "$4.49", image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Instant Noodles", price: "$1.99", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Bottled Water", price: "$1.49", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Phone Charger", price: "$12.99", image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Candy Bars", price: "$2.49", image: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" }
+                ]
+            },
+            afran: {
+                name: "Afran AlBassam",
+                description: "Authentic Lebanese bakery serving fresh manoushe and traditional pastries",
+                logo: "https://images.unsplash.com/photo-1597919195002-6a82e6146e00?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+                products: [
+                    { name: "Za'atar Manoushe", price: "$4.99", image: "https://images.unsplash.com/photo-1597919195002-6a82e6146e00?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Cheese Manoushe", price: "$5.99", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Meat Fatayer", price: "$3.49", image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Spinach Fatayer", price: "$2.99", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Baklava", price: "$6.99", image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Pita Bread", price: "$2.99", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" }
+                ]
+            },
+            abir: {
+                name: "Abir's Pharmacy",
+                description: "Your trusted pharmacy for medications and wellness essentials",
+                logo: "https://images.unsplash.com/photo-1576671081837-49000212a370?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+                products: [
+                    { name: "Vitamin C Tablets", price: "$12.99", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Pain Relief Gel", price: "$8.49", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Hand Sanitizer", price: "$4.99", image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Face Masks", price: "$9.99", image: "https://images.unsplash.com/photo-1584634428765-6e5a13db9e5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "Thermometer", price: "$24.99", image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" },
+                    { name: "First Aid Kit", price: "$19.99", image: "https://images.unsplash.com/photo-1603398938761-abbeda0f8cd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" }
+                ]
+            }
+        };
+
+        function showMerchantProducts(merchantId) {
+            const merchant = merchantData[merchantId];
+            
+            // Hide home page
+            document.querySelector('main').style.display = 'none';
+            
+            // Show products page
+            document.getElementById('productsPage').classList.remove('hidden');
+            
+            // Update merchant information
+            document.getElementById('merchantName').textContent = merchant.name;
+            document.getElementById('merchantDescription').textContent = merchant.description;
+            document.getElementById('merchantLogo').src = merchant.logo;
+            document.getElementById('merchantLogo').alt = `${merchant.name} logo`;
+            
+            // Generate products grid
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            merchant.products.forEach(product => {
+                const productCard = `
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900 mb-2">${product.name}</h3>
+                            <p class="text-shoufly-blue font-bold text-lg mb-3">${product.price}</p>
+                            <button class="w-full bg-shoufly-green text-white py-2 rounded-lg hover:bg-green-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.innerHTML += productCard;
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function showHomePage() {
+            // Show home page
+            document.querySelector('main').style.display = 'block';
+            
+            // Hide products page
+            document.getElementById('productsPage').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // TODO: Implement actual shopping cart functionality, user authentication, and payment processing
+        // TODO: Add real-time inventory updates and order tracking
+        // TODO: Integrate with backend APIs for merchant and product data
+    </script>
+</body>
+</html>
