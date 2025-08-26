@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@shared/schema";
-import { Apple, Croissant, Milk, Cookie, Battery, StickyNote, Pill, Bandage, Thermometer } from "lucide-react";
+import { Apple, Croissant, Milk, Cookie, Battery, StickyNote, Pill, Bandage, Thermometer, Plus, Check, Heart } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 
 interface ProductCardProps {
@@ -25,43 +25,122 @@ const getProductIcon = (productName: string) => {
 
 export function ProductCard({ product, merchantButtonColor }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const { dispatch } = useCart();
   const IconComponent = getProductIcon(product.name);
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_ITEM', payload: product });
     setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 1000);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden">
-      <div className="h-36 sm:h-48 bg-gray-200 flex items-center justify-center" data-testid={`img-product-${product.id}`}>
-        <IconComponent className="text-gray-400" size={48} />
+    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden card-hover animate-fade-in border border-gray-100">
+      {/* Product Image/Icon Container */}
+      <div className="relative h-40 sm:h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden" data-testid={`img-product-${product.id}`}>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="w-full h-full" style={{
+            backgroundImage: `radial-gradient(circle at 20% 50%, ${merchantButtonColor === 'blue' ? 'hsl(22 95% 58%)' : 'hsl(142 76% 36%)'} 0%, transparent 50%), radial-gradient(circle at 80% 20%, ${merchantButtonColor === 'blue' ? 'hsl(260 84% 65%)' : 'hsl(42 96% 59%)'} 0%, transparent 50%)`
+          }} />
+        </div>
+        
+        {/* Product Icon */}
+        <div className="relative z-10 p-8">
+          <IconComponent 
+            className={`transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${
+              merchantButtonColor === 'blue' ? 'text-primary' : 'text-secondary'
+            }`} 
+            size={56} 
+          />
+        </div>
+        
+        {/* Like Button */}
+        <button
+          onClick={toggleLike}
+          className="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
+          data-testid={`button-like-${product.id}`}
+        >
+          <Heart 
+            className={`h-4 w-4 transition-colors duration-300 ${
+              isLiked ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-400'
+            }`} 
+          />
+        </button>
+        
+        {/* Quick Add Button (appears on hover) */}
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <Button
+            onClick={handleAddToCart}
+            size="sm"
+            className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-gray-800 hover:bg-gray-50 shadow-lg"
+          >
+            <Plus className="h-4 w-4 mr-1" />
+            Quick Add
+          </Button>
+        </div>
       </div>
-      <div className="p-4 sm:p-6">
-        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2" data-testid={`text-product-name-${product.id}`}>
-          {product.name}
-        </h3>
-        <p className={`text-xl sm:text-2xl font-bold mb-4 ${
-          merchantButtonColor === 'blue' ? 'text-shoufly-blue' : 'text-shoufly-green'
-        }`} data-testid={`text-product-price-${product.id}`}>
-          {product.price}
-        </p>
+      
+      {/* Product Content */}
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 line-clamp-2 flex-1 mr-2" data-testid={`text-product-name-${product.id}`}>
+            {product.name}
+          </h3>
+        </div>
+        
+        {/* Price */}
+        <div className="flex items-center justify-between mb-4">
+          <p className={`text-2xl font-bold ${
+            merchantButtonColor === 'blue' ? 'text-primary' : 'text-secondary'
+          }`} data-testid={`text-product-price-${product.id}`}>
+            {product.price}
+          </p>
+          
+          {/* Stock Status */}
+          <span className="text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full">
+            In Stock
+          </span>
+        </div>
+        
+        {/* Add to Cart Button */}
         <Button
           onClick={handleAddToCart}
-          className={`w-full ${
+          disabled={isAdded}
+          className={`w-full h-12 rounded-xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center space-x-2 ${
             isAdded 
-              ? 'bg-green-600' 
+              ? 'bg-green-600 hover:bg-green-600 cursor-default' 
               : merchantButtonColor === 'blue' 
-                ? 'bg-shoufly-blue hover:bg-blue-600' 
-                : 'bg-shoufly-green hover:bg-green-600'
-          } text-white py-3 px-4 rounded-lg transition-colors text-sm sm:text-base font-medium min-h-[44px]`}
+                ? 'button-primary' 
+                : 'button-secondary'
+          }`}
           data-testid={`button-add-to-cart-${product.id}`}
         >
-          {isAdded ? 'Added!' : 'Add to Cart'}
+          {isAdded ? (
+            <>
+              <Check className="h-5 w-5 animate-bounce-in" />
+              <span>Added to Cart!</span>
+            </>
+          ) : (
+            <>
+              <Plus className="h-5 w-5 transition-transform duration-300 group-hover:rotate-180" />
+              <span>Add to Cart</span>
+            </>
+          )}
         </Button>
       </div>
+      
+      {/* Bottom Accent Line */}
+      <div className={`h-1 w-full transition-all duration-500 ${
+        merchantButtonColor === 'blue' 
+          ? 'bg-gradient-primary' 
+          : 'bg-gradient-secondary'
+      } transform scale-x-0 group-hover:scale-x-100`} />
     </div>
   );
 }
