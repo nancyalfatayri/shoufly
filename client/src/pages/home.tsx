@@ -76,11 +76,11 @@ export default function Home() {
                     const merchantsSection = document.getElementById('merchants');
                     merchantsSection?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="bg-white text-primary hover:bg-gray-50 font-bold text-base xs:text-lg px-6 xs:px-8 py-4 xs:py-5 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 touch-target whitespace-nowrap flex items-center gap-2 min-w-fit min-h-[3.5rem] leading-relaxed"
+                  className="bg-white text-primary hover:bg-gray-50 font-bold text-base xs:text-lg px-8 xs:px-10 py-5 xs:py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 touch-target whitespace-nowrap flex items-center justify-center gap-3 min-w-fit h-auto overflow-hidden"
                   data-testid="button-start-shopping"
                 >
                   <Search className="h-5 w-5 flex-shrink-0" />
-                  <span className="leading-normal">Start Shopping</span>
+                  <span className="block">Start Shopping</span>
                 </Button>
               </div>
             </div>
