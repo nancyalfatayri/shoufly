@@ -70,7 +70,7 @@ export function Header() {
               >
                 <ShoppingCart size={22} className="transition-transform duration-300 hover:scale-110" />
                 {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gradient-primary text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-bounce-in" data-testid="cart-count">
+                  <span className="absolute -top-1 -right-1 gradient-primary text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-bounce-in" data-testid="cart-count">
                     {itemCount > 99 ? '99+' : itemCount}
                   </span>
                 )}
@@ -176,7 +176,7 @@ export function Header() {
                 <span className="font-medium">My Cart</span>
               </div>
               {itemCount > 0 && (
-                <span className="bg-gradient-primary text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
+                <span className="gradient-primary text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
                   {itemCount > 99 ? '99+' : itemCount}
                 </span>
               )}
