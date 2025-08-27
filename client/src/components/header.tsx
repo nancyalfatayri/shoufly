@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { ShoppingCart, Menu, X, Home, Info, Mail } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { useState } from "react";
-import shouflylLogo from "@assets/generated_images/Shoufly_delivery_app_logo_a8e4d021.png";
+import shouflylLogo from "@assets/generated_images/Shoufly_logo_orange_green_636eaa9f.png";
 
 export function Header() {
   const { state } = useCart();
