@@ -71,18 +71,17 @@ export default function Home() {
               
               {/* CTA Button */}
               <div className="flex justify-center animate-fade-in">
-                <Button 
+                <button
                   onClick={() => {
                     const merchantsSection = document.getElementById('merchants');
                     merchantsSection?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  size="lg"
-                  className="bg-white/95 backdrop-blur-sm text-primary hover:bg-white hover:text-primary/90 font-semibold text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20 group"
+                  className="inline-flex items-center justify-center bg-white text-primary hover:bg-gray-50 font-semibold text-lg px-10 py-5 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20 group min-h-[4rem] leading-none"
                   data-testid="button-start-shopping"
                 >
-                  <Search className="h-5 w-5 mr-3 group-hover:scale-110 transition-transform duration-300" />
-                  Start Shopping
-                </Button>
+                  <Search className="h-5 w-5 mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="whitespace-nowrap">Start Shopping</span>
+                </button>
               </div>
             </div>
           </div>
