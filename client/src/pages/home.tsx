@@ -105,58 +105,74 @@ export default function Home() {
         </section>
 
         {/* Search Bar Section */}
-        <section className="relative -mt-10 z-10">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-100">
-              <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5 z-10" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onFocus={() => setIsSearchFocused(true)}
-                    onBlur={() => setIsSearchFocused(false)}
-                    placeholder="Search for merchants and stores..."
-                    className={`w-full pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 ${
-                      isSearchFocused 
-                        ? 'border-primary ring-4 ring-primary/10 shadow-lg' 
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                    data-testid="input-search"
-                  />
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      onClick={clearSearch}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-200 z-10"
-                      data-testid="button-clear-search"
-                    >
-                      <X className="h-5 w-5" />
-                    </button>
-                  )}
-                </div>
-                <Button 
-                  type="submit"
-                  className="button-primary px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-xl"
-                  data-testid="button-search"
-                >
-                  <Search className="h-5 w-5 mr-2" />
-                  Search
-                </Button>
-              </form>
-              
-              {/* Search Results Count */}
-              {searchQuery && (
-                <div className="mt-4 px-2">
-                  <p className="text-sm text-gray-600">
-                    {filteredMerchants.length > 0 
-                      ? `Found ${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'result' : 'results'} for "${searchQuery}"`
-                      : `No results found for "${searchQuery}"`
-                    }
-                  </p>
-                </div>
-              )}
+        <section className="relative -mt-8 z-10">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+              <div className="p-8">
+                <form onSubmit={handleSearchSubmit}>
+                  <div className="relative">
+                    {/* Search Input Container */}
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-6 pointer-events-none">
+                        <Search className={`h-6 w-6 transition-colors duration-300 ${
+                          isSearchFocused ? 'text-primary' : 'text-gray-400'
+                        }`} />
+                      </div>
+                      <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onFocus={() => setIsSearchFocused(true)}
+                        onBlur={() => setIsSearchFocused(false)}
+                        placeholder="Search for merchants and stores..."
+                        className={`w-full pl-16 pr-32 py-6 text-lg bg-gray-50 border-0 rounded-2xl outline-none transition-all duration-300 placeholder:text-gray-400 ${
+                          isSearchFocused 
+                            ? 'bg-white shadow-xl ring-4 ring-primary/10 scale-[1.02]' 
+                            : 'hover:bg-white hover:shadow-lg'
+                        }`}
+                        data-testid="input-search"
+                      />
+                      
+                      {/* Action Buttons Container */}
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 space-x-2">
+                        {searchQuery && (
+                          <button
+                            type="button"
+                            onClick={clearSearch}
+                            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200"
+                            data-testid="button-clear-search"
+                          >
+                            <X className="h-5 w-5" />
+                          </button>
+                        )}
+                        <Button 
+                          type="submit"
+                          className="button-primary px-6 py-3 text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                          data-testid="button-search"
+                        >
+                          <Search className="h-5 w-5" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                
+                {/* Search Results Count */}
+                {searchQuery && (
+                  <div className="mt-6 px-2">
+                    <div className="flex items-center justify-center">
+                      <div className="bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
+                        <p className="text-sm font-medium text-primary">
+                          {filteredMerchants.length > 0 
+                            ? `${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'merchant' : 'merchants'} found`
+                            : `No merchants found for "${searchQuery}"`
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
