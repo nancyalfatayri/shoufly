@@ -5,7 +5,7 @@ import { merchants } from "@/lib/data";
 import { Search, MapPin, Clock, Star, Truck, Shield, Heart, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useMemo } from "react";
-import shouflylLogo from "@assets/generated_images/Shoufly_delivery_app_logo_47ff6a01.png";
+import shouflylLogo from "@assets/generated_images/Clean_Shoufly_text_logo_cd109857.png";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
