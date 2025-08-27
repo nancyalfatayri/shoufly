@@ -6,6 +6,8 @@ import { Search, MapPin, Clock, Star, Truck, Shield, Heart, X } from "lucide-rea
 import { Link } from "wouter";
 import { useState, useMemo } from "react";
 import shouflylLogo from "@assets/generated_images/Clean_Shoufly_text_logo_cd109857.png";
+import transparentPricingIcon from "@assets/generated_images/Transparent_pricing_icon_illustration_5050f43e.png";
+import supportLocalIcon from "@assets/generated_images/Support_local_businesses_icon_f0e2511a.png";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -241,16 +243,24 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
-                <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-8 w-8 text-white" />
+                <div className="w-20 h-20 mx-auto mb-4 overflow-hidden rounded-2xl">
+                  <img 
+                    src={transparentPricingIcon} 
+                    alt="Transparent Pricing" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Transparent Pricing</h3>
                 <p className="text-gray-600">No hidden fees or surprises. What you see is what you pay, with clear pricing on every item.</p>
               </div>
               
               <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
-                <div className="w-16 h-16 bg-gradient-secondary rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Heart className="h-8 w-8 text-white" />
+                <div className="w-20 h-20 mx-auto mb-4 overflow-hidden rounded-2xl">
+                  <img 
+                    src={supportLocalIcon} 
+                    alt="Support Local Businesses" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Support Local</h3>
                 <p className="text-gray-600">Every order helps support local businesses and strengthens your community.</p>
