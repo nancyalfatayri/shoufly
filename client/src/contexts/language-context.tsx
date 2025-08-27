@@ -50,6 +50,15 @@ const translations = {
     'merchants.showing': 'Showing',
     'merchants.matching': 'merchants matching your search',
     'merchants.tryAdjusting': 'Try adjusting your search terms or browse all merchants below',
+    
+    // Merchant Card
+    'merchant.shopNow': 'Shop Now',
+    
+    // Product Card
+    'product.inStock': 'In Stock',
+    'product.quickAdd': 'Quick Add',
+    'product.addToCart': 'Add to Cart',
+    'product.addedToCart': 'Added to Cart!',
 
     // Features
     'features.title': 'Why Choose Shoufly?',
@@ -109,8 +118,17 @@ const translations = {
     'merchants.featured': 'التجار المميزون',
     'merchants.description': 'اكتشف الشركات المحلية الرائعة في حيك. من البقالة الطازجة إلى السلع المتخصصة.',
     'merchants.showing': 'عرض',
-    'merchants.matching': 'تاجر يطابق بحثك',
+    'merchants.matching': 'تجار يطابقون بحثك',
     'merchants.tryAdjusting': 'جرب تعديل مصطلحات البحث أو تصفح جميع التجار أدناه',
+    
+    // Merchant Card
+    'merchant.shopNow': 'تسوق الآن',
+    
+    // Product Card
+    'product.inStock': 'متوفر',
+    'product.quickAdd': 'إضافة سريعة',
+    'product.addToCart': 'أضف إلى السلة',
+    'product.addedToCart': 'تمت الإضافة!',
 
     // Features
     'features.title': 'لماذا تختار شوفلي؟',

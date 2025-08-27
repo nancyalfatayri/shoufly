@@ -4,6 +4,7 @@ import { Product } from "@shared/schema";
 import { Apple, Croissant, Milk, Cookie, Battery, StickyNote, Pill, Bandage, Thermometer, Plus, Check, Heart } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { useWishlist } from "@/contexts/wishlist-context";
+import { useLanguage } from "@/contexts/language-context";
 
 interface ProductCardProps {
   product: Product;
@@ -26,10 +27,16 @@ const getProductIcon = (productName: string) => {
 
 export function ProductCard({ product, merchantButtonColor }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
+  const { language, t } = useLanguage();
   const { dispatch } = useCart();
   const { dispatch: wishlistDispatch, isInWishlist } = useWishlist();
   const IconComponent = getProductIcon(product.name);
   const isLiked = isInWishlist(product.id);
+  
+  // Get the appropriate product name based on current language
+  const productName = language === 'ar' && (product as any).nameAr 
+    ? (product as any).nameAr 
+    : product.name;
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_ITEM', payload: product });
@@ -87,7 +94,7 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
             className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-gray-800 hover:bg-gray-50 shadow-lg text-sm"
           >
             <Plus className="h-4 w-4 mr-1" />
-            Quick Add
+            {t('product.quickAdd')}
           </Button>
         </div>
       </div>
@@ -96,7 +103,7 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
       <div className="p-4 xs:p-5">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-base xs:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 line-clamp-2 flex-1 mr-2" data-testid={`text-product-name-${product.id}`}>
-            {product.name}
+            {productName}
           </h3>
         </div>
         
@@ -110,7 +117,7 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
           
           {/* Stock Status */}
           <span className="text-xs xs:text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full">
-            In Stock
+            {t('product.inStock')}
           </span>
         </div>
         
@@ -130,12 +137,12 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
           {isAdded ? (
             <>
               <Check className="h-5 w-5 animate-bounce-in" />
-              <span>Added to Cart!</span>
+              <span>{t('product.addedToCart')}</span>
             </>
           ) : (
             <>
               <Plus className="h-5 w-5 transition-transform duration-300 group-hover:rotate-180" />
-              <span>Add to Cart</span>
+              <span>{t('product.addToCart')}</span>
             </>
           )}
         </Button>

@@ -2,15 +2,25 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Merchant } from "@shared/schema";
 import { } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 interface MerchantCardProps {
   merchant: Merchant;
 }
 
 export function MerchantCard({ merchant }: MerchantCardProps) {
+  const { language, t } = useLanguage();
   // Mock rating and delivery time for demonstration
   const rating = 4.2 + (Number(merchant.id) % 8) * 0.1;
   const deliveryTime = 20 + (Number(merchant.id) % 5) * 5;
+  
+  // Get the appropriate name and description based on current language
+  const merchantName = language === 'ar' && (merchant as any).nameAr 
+    ? (merchant as any).nameAr 
+    : merchant.name;
+  const merchantDescription = language === 'ar' && (merchant as any).descriptionAr 
+    ? (merchant as any).descriptionAr 
+    : merchant.description;
   
   return (
     <div className="group bg-white rounded-xl xs:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden card-hover animate-fade-in border border-gray-100 flex flex-col h-full w-full">
@@ -18,7 +28,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
       <div className="relative overflow-hidden">
         <img
           src={merchant.image}
-          alt={`${merchant.name} storefront`}
+          alt={`${merchantName} storefront`}
           className="w-full h-40 xs:h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-110"
           data-testid={`img-merchant-${merchant.id}`}
         />
@@ -31,12 +41,12 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
       <div className="p-4 xs:p-6 flex flex-col flex-1">
         <div className="mb-3">
           <h3 className="text-lg xs:text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300" data-testid={`text-merchant-name-${merchant.id}`}>
-            {merchant.name}
+            {merchantName}
           </h3>
         </div>
         
         <p className="text-sm xs:text-base text-gray-600 mb-3 xs:mb-4 line-clamp-2 leading-relaxed flex-1" data-testid={`text-merchant-description-${merchant.id}`}>
-          {merchant.description}
+          {merchantDescription}
         </p>
         
         
@@ -52,7 +62,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
               data-testid={`button-shop-${merchant.id}`}
             >
               <span className="flex items-center justify-center space-x-2">
-                <span>Shop Now</span>
+                <span>{t('merchant.shopNow')}</span>
                 <span className="text-lg group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
             </Button>
