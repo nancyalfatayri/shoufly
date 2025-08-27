@@ -5,6 +5,7 @@ import { merchants } from "@/lib/data";
 import { Search, MapPin, Clock, Star, Truck, Shield, Heart, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useMemo } from "react";
+import { useLanguage } from "@/contexts/language-context";
 import shouflylLogo from "@assets/generated_images/Clean_Shoufly_text_logo_cd109857.png";
 import transparentPricingIcon from "@assets/generated_images/Modern_transparent_pricing_illustration_19a3f1dc.png";
 import supportLocalIcon from "@assets/generated_images/Support_local_businesses_icon_f0e2511a.png";
@@ -12,6 +13,7 @@ import supportLocalIcon from "@assets/generated_images/Support_local_businesses_
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const { t, isRTL } = useLanguage();
 
   // Filter merchants based on search query
   const filteredMerchants = useMemo(() => {
@@ -36,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-inter">
+    <div className={`min-h-screen bg-background font-inter ${isRTL ? 'rtl' : 'ltr'}`}>
       <Header />
       
       <main>
@@ -62,13 +64,13 @@ export default function Home() {
             <div className="text-center">
               {/* Hero Title */}
               <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 xs:mb-6 animate-slide-up" data-testid="text-hero-title">
-                Shop Local,{" "}
-                <span className="block xs:inline bg-white/20 backdrop-blur-sm rounded-xl xs:rounded-2xl px-3 xs:px-4 py-1.5 xs:py-2 mt-2 xs:mt-0 xs:ml-2">Delivered Fast</span>
+                {t('hero.title.part1')}{" "}
+                <span className={`block xs:inline bg-white/20 backdrop-blur-sm rounded-xl xs:rounded-2xl px-3 xs:px-4 py-1.5 xs:py-2 mt-2 xs:mt-0 ${isRTL ? 'xs:mr-2' : 'xs:ml-2'}`}>{t('hero.title.part2')}</span>
               </h1>
               
               {/* Hero Description */}
               <p className="text-base xs:text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-4 xs:mb-5 leading-relaxed animate-slide-up px-4" data-testid="text-hero-description">
-                Order from your favorite local stores and get fresh groceries, pharmacy items, and baked goods delivered straight to your door.
+                {t('hero.description')}
               </p>
               
               {/* CTA Button */}
@@ -81,8 +83,8 @@ export default function Home() {
                   className="inline-flex items-center justify-center bg-white text-primary hover:bg-gray-50 font-semibold text-lg px-10 py-5 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20 group min-h-[4rem] leading-none"
                   data-testid="button-start-shopping"
                 >
-                  <Search className="h-5 w-5 mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="whitespace-nowrap">Start Shopping</span>
+                  <Search className={`h-5 w-5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0 group-hover:scale-110 transition-transform duration-300`} />
+                  <span className="whitespace-nowrap">{t('hero.cta')}</span>
                 </button>
               </div>
             </div>
@@ -103,7 +105,7 @@ export default function Home() {
                   <div className="relative">
                     {/* Search Input Container */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 flex items-center pl-4 xs:pl-6 pointer-events-none">
+                      <div className={`absolute inset-y-0 ${isRTL ? 'right-0 pr-4 xs:pr-6' : 'left-0 pl-4 xs:pl-6'} flex items-center pointer-events-none`}>
                         <Search className={`h-5 xs:h-6 w-5 xs:w-6 transition-colors duration-300 ${
                           isSearchFocused ? 'text-primary' : 'text-gray-400'
                         }`} />
@@ -114,8 +116,8 @@ export default function Home() {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onFocus={() => setIsSearchFocused(true)}
                         onBlur={() => setIsSearchFocused(false)}
-                        placeholder="Search merchants and stores..."
-                        className={`w-full pl-12 xs:pl-16 pr-24 xs:pr-32 py-4 xs:py-6 text-base xs:text-lg bg-gray-50 border-0 rounded-xl xs:rounded-2xl outline-none transition-all duration-300 placeholder:text-gray-400 ${
+                        placeholder={t('search.placeholder')}
+                        className={`w-full ${isRTL ? 'pr-12 xs:pr-16 pl-24 xs:pl-32' : 'pl-12 xs:pl-16 pr-24 xs:pr-32'} py-4 xs:py-6 text-base xs:text-lg bg-gray-50 border-0 rounded-xl xs:rounded-2xl outline-none transition-all duration-300 placeholder:text-gray-400 ${
                           isSearchFocused 
                             ? 'bg-white shadow-xl ring-4 ring-primary/10 scale-[1.02]' 
                             : 'hover:bg-white hover:shadow-lg'

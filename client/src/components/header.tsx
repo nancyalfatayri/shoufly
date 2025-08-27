@@ -1,8 +1,9 @@
 import { Link } from "wouter";
-import { ShoppingCart, Menu, X, Home, Info, Mail, Heart, User, LogOut, Settings, Package } from "lucide-react";
+import { ShoppingCart, Menu, X, Home, Info, Mail, Heart, User, LogOut, Settings, Package, Globe } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { useWishlist } from "@/contexts/wishlist-context";
 import { useAuth } from "@/contexts/auth-context";
+import { useLanguage } from "@/contexts/language-context";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -19,6 +20,7 @@ export function Header() {
   const { state } = useCart();
   const { state: wishlistState } = useWishlist();
   const { isAuthenticated, isAdmin, state: authState, logout } = useAuth();
+  const { t, language, setLanguage, isRTL } = useLanguage();
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistCount = wishlistState.items.length;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,13 +48,13 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className={`hidden md:flex items-center ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
               <Link 
                 href="/#merchants" 
                 className="text-gray-700 hover:text-primary font-medium transition-all duration-300 hover:scale-105 relative group" 
                 data-testid="link-merchants"
               >
-                Merchants
+                {t('nav.merchants')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link 
@@ -60,7 +62,7 @@ export function Header() {
                 className="text-gray-700 hover:text-primary font-medium transition-all duration-300 hover:scale-105 relative group" 
                 data-testid="link-about"
               >
-                About
+                {t('nav.about')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link 
@@ -68,13 +70,38 @@ export function Header() {
                 className="text-gray-700 hover:text-primary font-medium transition-all duration-300 hover:scale-105 relative group" 
                 data-testid="link-contact"
               >
-                Contact
+                {t('nav.contact')}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </nav>
 
-            {/* Cart, Wishlist, Auth and Mobile Menu Button */}
-            <div className="flex items-center space-x-2">
+            {/* Language Switcher, Cart, Wishlist, Auth and Mobile Menu Button */}
+            <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
+              {/* Language Switcher */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-1 text-gray-700 hover:text-primary">
+                    <Globe size={18} />
+                    <span className="hidden sm:inline text-xs font-medium">
+                      {language.toUpperCase()}
+                    </span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-32">
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('en')}
+                    className={language === 'en' ? 'bg-gray-100' : ''}
+                  >
+                    English
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setLanguage('ar')}
+                    className={language === 'ar' ? 'bg-gray-100' : ''}
+                  >
+                    العربية
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               {/* Wishlist */}
               <Link 
                 href="/wishlist" 
@@ -117,19 +144,19 @@ export function Header() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-48">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>{t('nav.myaccount')}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
                       <Link href="/my-orders" className="flex items-center space-x-2 w-full">
                         <Package size={16} />
-                        <span>My Orders</span>
+                        <span>{t('nav.myorders')}</span>
                       </Link>
                     </DropdownMenuItem>
                     {isAdmin && (
                       <DropdownMenuItem asChild>
                         <Link href="/admin" className="flex items-center space-x-2 w-full">
                           <Settings size={16} />
-                          <span>Admin Dashboard</span>
+                          <span>{t('nav.admin')}</span>
                         </Link>
                       </DropdownMenuItem>
                     )}
@@ -139,17 +166,17 @@ export function Header() {
                       className="flex items-center space-x-2 text-red-600 hover:text-red-700"
                     >
                       <LogOut size={16} />
-                      <span>Sign Out</span>
+                      <span>{t('nav.signout')}</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <div className="hidden md:flex items-center space-x-2">
+                <div className={`hidden md:flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
                   <Button variant="ghost" size="sm" asChild>
-                    <Link href="/login">Sign In</Link>
+                    <Link href="/login">{t('nav.signin')}</Link>
                   </Button>
                   <Button size="sm" asChild>
-                    <Link href="/register">Sign Up</Link>
+                    <Link href="/register">{t('nav.signup')}</Link>
                   </Button>
                 </div>
               )}
