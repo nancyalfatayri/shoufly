@@ -239,7 +239,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
                 <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-8 w-8 text-white" />
@@ -254,14 +254,6 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Support Local</h3>
                 <p className="text-gray-600">Every order helps support local businesses and strengthens your community.</p>
-              </div>
-              
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
-                <div className="w-16 h-16 bg-gradient-hero rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Secure & Safe</h3>
-                <p className="text-gray-600">Your payments and personal data are protected with enterprise-grade security.</p>
               </div>
             </div>
           </div>
