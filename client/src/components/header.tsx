@@ -1,13 +1,24 @@
 import { Link } from "wouter";
-import { ShoppingCart, Menu, X, Home, Info, Mail, Heart } from "lucide-react";
+import { ShoppingCart, Menu, X, Home, Info, Mail, Heart, User, LogOut, Settings, Package } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { useWishlist } from "@/contexts/wishlist-context";
+import { useAuth } from "@/contexts/auth-context";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import shouflylLogo from "@assets/generated_images/Clean_Shoufly_text_logo_cd109857.png";
 
 export function Header() {
   const { state } = useCart();
   const { state: wishlistState } = useWishlist();
+  const { isAuthenticated, isAdmin, state: authState, logout } = useAuth();
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistCount = wishlistState.items.length;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -62,7 +73,7 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Cart, Wishlist and Mobile Menu Button */}
+            {/* Cart, Wishlist, Auth and Mobile Menu Button */}
             <div className="flex items-center space-x-2">
               {/* Wishlist */}
               <Link 
@@ -93,6 +104,55 @@ export function Header() {
                   </span>
                 )}
               </Link>
+
+              {/* Authentication */}
+              {isAuthenticated ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="flex items-center space-x-2 text-gray-700 hover:text-primary">
+                      <User size={20} />
+                      <span className="hidden sm:inline">
+                        {authState.user?.firstName}
+                      </span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/my-orders" className="flex items-center space-x-2 w-full">
+                        <Package size={16} />
+                        <span>My Orders</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    {isAdmin && (
+                      <DropdownMenuItem asChild>
+                        <Link href="/admin" className="flex items-center space-x-2 w-full">
+                          <Settings size={16} />
+                          <span>Admin Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem 
+                      onClick={logout}
+                      className="flex items-center space-x-2 text-red-600 hover:text-red-700"
+                    >
+                      <LogOut size={16} />
+                      <span>Sign Out</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <div className="hidden md:flex items-center space-x-2">
+                  <Button variant="ghost" size="sm" asChild>
+                    <Link href="/login">Sign In</Link>
+                  </Button>
+                  <Button size="sm" asChild>
+                    <Link href="/register">Sign Up</Link>
+                  </Button>
+                </div>
+              )}
 
               {/* Mobile Menu Button */}
               <button
