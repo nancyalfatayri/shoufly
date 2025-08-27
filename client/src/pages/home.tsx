@@ -5,7 +5,7 @@ import { merchants } from "@/lib/data";
 import { Search, MapPin, Clock, Star, Truck, Shield, Heart, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useMemo } from "react";
-import shouflylLogo from "@assets/generated_images/Shoufly_modern_delivery_logo_5ce80390.png";
+import shouflylLogo from "@assets/generated_images/Shoufly_delivery_app_logo_47ff6a01.png";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -288,7 +288,7 @@ export default function Home() {
                 <img
                   src={shouflylLogo}
                   alt="Shoufly logo"
-                  className="h-8 w-auto"
+                  className="h-10 w-auto"
                 />
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
