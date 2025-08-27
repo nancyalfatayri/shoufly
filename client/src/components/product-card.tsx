@@ -69,7 +69,7 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
         {/* Like Button */}
         <button
           onClick={toggleLike}
-          className="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
+          className="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 z-20"
           data-testid={`button-like-${product.id}`}
         >
           <Heart 
@@ -80,7 +80,7 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
         </button>
         
         {/* Quick Add Button (appears on hover) */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-10">
           <Button
             onClick={handleAddToCart}
             size="sm"
