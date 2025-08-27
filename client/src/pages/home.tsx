@@ -275,17 +275,6 @@ export default function Home() {
               <p className="text-gray-400 mb-4 max-w-md">
                 Connecting you with the best local businesses. Fresh groceries, pharmacy items, and more delivered to your door.
               </p>
-              <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
-                  <span className="text-sm">f</span>
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
-                  <span className="text-sm">t</span>
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
-                  <span className="text-sm">in</span>
-                </div>
-              </div>
             </div>
             
             <div>
@@ -293,7 +282,6 @@ export default function Home() {
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Become a Partner</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
               </ul>
             </div>
