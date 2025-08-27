@@ -117,7 +117,7 @@ export default function Home() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
-                    placeholder="Search for stores, products, or categories..."
+                    placeholder="Search for merchants and stores..."
                     className={`w-full pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 ${
                       isSearchFocused 
                         ? 'border-primary ring-4 ring-primary/10 shadow-lg' 
