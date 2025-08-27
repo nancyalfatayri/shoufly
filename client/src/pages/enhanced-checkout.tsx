@@ -119,7 +119,7 @@ export default function EnhancedCheckoutPage() {
               Thank you for your order! Your order #{orderId} has been placed successfully.
             </p>
             <p className="text-base text-gray-500 mb-8 sm:mb-12">
-              You'll receive WhatsApp notifications about your delivery status. Expected delivery time: 30-45 minutes.
+              You'll receive WhatsApp notifications about your delivery status.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
