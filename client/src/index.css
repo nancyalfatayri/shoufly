@@ -137,6 +137,60 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="rtl"] .space-x-2 > * + * {
+    margin-right: 0.5rem;
+    margin-left: 0;
+  }
+
+  [dir="rtl"] .space-x-4 > * + * {
+    margin-right: 1rem;
+    margin-left: 0;
+  }
+
+  [dir="rtl"] .space-x-8 > * + * {
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+
+  [dir="rtl"] .ml-2 {
+    margin-right: 0.5rem;
+    margin-left: 0;
+  }
+
+  [dir="rtl"] .mr-2 {
+    margin-left: 0.5rem;
+    margin-right: 0;
+  }
+
+  [dir="rtl"] .ml-3 {
+    margin-right: 0.75rem;
+    margin-left: 0;
+  }
+
+  [dir="rtl"] .mr-3 {
+    margin-left: 0.75rem;
+    margin-right: 0;
+  }
+
+  [dir="rtl"] .pl-4,
+  [dir="rtl"] .pl-6,
+  [dir="rtl"] .pl-12,
+  [dir="rtl"] .pl-16 {
+    padding-left: 0;
+  }
+
+  [dir="rtl"] .pr-4,
+  [dir="rtl"] .pr-6,
+  [dir="rtl"] .pr-24,
+  [dir="rtl"] .pr-32 {
+    padding-right: 0;
+  }
 }
 
 .font-inter {

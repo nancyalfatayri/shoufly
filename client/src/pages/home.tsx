@@ -156,8 +156,8 @@ export default function Home() {
                       <div className="bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
                         <p className="text-sm font-medium text-primary">
                           {filteredMerchants.length > 0 
-                            ? `${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'merchant' : 'merchants'} found`
-                            : `No merchants found for "${searchQuery}"`
+                            ? `${filteredMerchants.length} ${filteredMerchants.length === 1 ? t('search.merchant') : t('search.merchants')} ${t('search.found')}`
+                            : `${t('search.noResults')} "${searchQuery}"`
                           }
                         </p>
                       </div>
@@ -176,18 +176,18 @@ export default function Home() {
             <div className="text-center mb-8 xs:mb-12">
               <h2 className="text-2xl xs:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 xs:mb-4" data-testid="text-featured-merchants">
                 {searchQuery ? (
-                  <>Search <span className="text-gradient">Results</span></>
+                  <>{t('search.results').split(' ')[0]} <span className="text-gradient">{t('search.results').split(' ')[1] || t('search.results')}</span></>
                 ) : (
-                  <>Featured <span className="text-gradient">Merchants</span></>
+                  <>{t('merchants.featured').split(' ')[0]} <span className="text-gradient">{t('merchants.featured').split(' ').slice(1).join(' ')}</span></>
                 )}
               </h2>
               <p className="text-base xs:text-lg text-gray-600 max-w-2xl mx-auto px-4">
                 {searchQuery ? (
                   filteredMerchants.length > 0 
-                    ? `Showing ${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'merchant' : 'merchants'} matching your search`
-                    : "Try adjusting your search terms or browse all merchants below"
+                    ? `${t('search.showing')} ${filteredMerchants.length} ${filteredMerchants.length === 1 ? t('search.merchant') : t('search.matching')}`
+                    : t('search.tryAdjusting')
                 ) : (
-                  "Discover amazing local businesses in your neighborhood. From fresh groceries to specialty items."
+                  t('merchants.description')
                 )}
               </p>
             </div>
@@ -206,17 +206,17 @@ export default function Home() {
                   <Search className="h-12 w-12 text-gray-400" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  No merchants found
+                  {t('search.noResults')}
                 </h3>
                 <p className="text-gray-600 mb-6 max-w-md mx-auto">
-                  We couldn't find any merchants matching "{searchQuery}". Try a different search term or browse all available merchants.
+                  {t('search.noResultsDesc')}
                 </p>
                 <Button 
                   onClick={clearSearch}
                   variant="outline"
                   className="button-secondary text-white border-0"
                 >
-                  Browse All Merchants
+                  {t('search.browseAll')}
                 </Button>
               </div>
             ) : (
@@ -236,10 +236,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Why Choose <span className="text-gradient">Shoufly</span>?
+                {t('features.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                We're committed to connecting you with the best local businesses while providing exceptional service.
+                {t('features.subtitle')}
               </p>
             </div>
             
@@ -252,8 +252,8 @@ export default function Home() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Transparent Pricing</h3>
-                <p className="text-gray-600">No hidden fees or surprises. What you see is what you pay, with clear pricing on every item.</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{t('features.transparent.title')}</h3>
+                <p className="text-gray-600">{t('features.transparent.desc')}</p>
               </div>
               
               <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift">
@@ -264,8 +264,8 @@ export default function Home() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Support Local</h3>
-                <p className="text-gray-600">Every order helps support local businesses and strengthens your community.</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{t('features.support.title')}</h3>
+                <p className="text-gray-600">{t('features.support.desc')}</p>
               </div>
             </div>
           </div>
@@ -285,22 +285,22 @@ export default function Home() {
                 />
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
-                Connecting you with the best local businesses. Fresh groceries, pharmacy items, and more delivered to your door.
+                {t('footer.description')}
               </p>
             </div>
             
             <div>
-              <h3 className="font-bold text-lg mb-4">Quick Links</h3>
+              <h3 className="font-bold text-lg mb-4">{t('footer.quicklinks')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+                <li><Link href="/about" className="hover:text-white transition-colors">{t('footer.aboutus')}</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">{t('nav.contact')}</Link></li>
+                <li><a href="#" className="hover:text-white transition-colors">{t('footer.careers')}</a></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p data-testid="text-footer-copyright">&copy; 2024 Shoufly. All rights reserved. Made with ❤️ for local communities.</p>
+            <p data-testid="text-footer-copyright">{t('footer.copyright')}</p>
           </div>
         </div>
       </footer>
