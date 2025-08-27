@@ -111,7 +111,17 @@ export default function LoginPage() {
             </Button>
           </form>
           
-          <div className="mt-6 text-center text-sm text-muted-foreground">
+          <div className="mt-4 text-center">
+            <Button
+              variant="link"
+              className="p-0 h-auto text-sm text-muted-foreground hover:text-primary"
+              onClick={() => setLocation('/forgot-password')}
+            >
+              Forgot your password?
+            </Button>
+          </div>
+          
+          <div className="mt-2 text-center text-sm text-muted-foreground">
             Don't have an account?{" "}
             <Button
               variant="link"

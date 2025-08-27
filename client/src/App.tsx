@@ -15,6 +15,8 @@ import AboutPage from "@/pages/about";
 import WishlistPage from "@/pages/wishlist";
 import LoginPage from "@/pages/login";
 import RegisterPage from "@/pages/register";
+import ForgotPasswordPage from "@/pages/forgot-password";
+import ResetPasswordPage from "@/pages/reset-password";
 import AdminDashboard from "@/pages/admin-dashboard";
 import MyOrdersPage from "@/pages/my-orders";
 import NotFound from "@/pages/not-found";
@@ -31,6 +33,8 @@ function Router() {
       <Route path="/wishlist" component={WishlistPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
+      <Route path="/forgot-password" component={ForgotPasswordPage} />
+      <Route path="/reset-password" component={ResetPasswordPage} />
       <Route path="/admin" component={AdminDashboard} />
       <Route path="/my-orders" component={MyOrdersPage} />
       {/* Fallback to 404 */}

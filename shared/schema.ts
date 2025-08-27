@@ -54,6 +54,15 @@ export const orderItems = pgTable('order_items', {
   merchantId: varchar('merchant_id', { length: 50 }).notNull(),
 });
 
+export const passwordResetTokens = pgTable('password_reset_tokens', {
+  id: serial('id').primaryKey(),
+  userId: serial('user_id').notNull(),
+  token: varchar('token', { length: 255 }).notNull().unique(),
+  expiresAt: timestamp('expires_at').notNull(),
+  used: timestamp('used'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
 // Zod Schemas
 export const merchantSchema = z.object({
   id: z.string(),
@@ -114,6 +123,15 @@ export const loginSchema = z.object({
   password: z.string().min(1),
 });
 
+export const forgotPasswordSchema = z.object({
+  email: z.string().email(),
+});
+
+export const resetPasswordSchema = z.object({
+  token: z.string(),
+  password: z.string().min(6),
+});
+
 export const checkoutSchema = z.object({
   deliveryAddress: z.string().min(1),
   phone: z.string().min(1),
@@ -134,3 +152,5 @@ export type Order = z.infer<typeof orderSchema>;
 export type RegisterData = z.infer<typeof registerSchema>;
 export type LoginData = z.infer<typeof loginSchema>;
 export type CheckoutData = z.infer<typeof checkoutSchema>;
+export type ForgotPasswordData = z.infer<typeof forgotPasswordSchema>;
+export type ResetPasswordData = z.infer<typeof resetPasswordSchema>;
