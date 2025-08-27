@@ -27,7 +27,7 @@ export function Header() {
               <img
                 src={shouflylLogo}
                 alt="Shoufly logo"
-                className="h-12 sm:h-14 w-auto transition-transform duration-300 hover:scale-105"
+                className="h-10 sm:h-12 w-auto transition-transform duration-300 hover:scale-105"
               />
             </Link>
 
