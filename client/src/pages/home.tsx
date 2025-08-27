@@ -71,12 +71,17 @@ export default function Home() {
               
               {/* CTA Button */}
               <div className="flex justify-center mb-12 animate-fade-in">
-                <Link href="/#merchants">
-                  <Button className="bg-white text-primary hover:bg-gray-50 font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <Search className="h-5 w-5 mr-2" />
-                    Start Shopping
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => {
+                    const merchantsSection = document.getElementById('merchants');
+                    merchantsSection?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="bg-white text-primary hover:bg-gray-50 font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  data-testid="button-start-shopping"
+                >
+                  <Search className="h-5 w-5 mr-2" />
+                  Start Shopping
+                </Button>
               </div>
               
               {/* Trust Indicators */}

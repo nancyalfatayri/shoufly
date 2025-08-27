@@ -1,4 +1,5 @@
 import { Merchant, Product } from "@shared/schema";
+import manousheImage from "@assets/generated_images/Lebanese_man2oushe_flatbread_c480dd9c.png";
 
 export const merchants: Merchant[] = [
   {
@@ -19,7 +20,7 @@ export const merchants: Merchant[] = [
     id: "afran",
     name: "Afran AlBassam",
     description: "Traditional Lebanese bakery",
-    image: "https://pixabay.com/get/g07a85babe398f982a8a1430e9df06cb4deb27eee055924d8b372699d3e3ce44502a0a99ba0e6bcd2da9ec808938c8b2bdd63133468d362daf25824cac185a74b_1280.jpg",
+    image: manousheImage,
     buttonColor: "blue"
   },
   {
