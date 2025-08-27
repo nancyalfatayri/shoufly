@@ -6,7 +6,7 @@ import { Search, MapPin, Clock, Star, Truck, Shield, Heart, X } from "lucide-rea
 import { Link } from "wouter";
 import { useState, useMemo } from "react";
 import shouflylLogo from "@assets/generated_images/Clean_Shoufly_text_logo_cd109857.png";
-import transparentPricingIcon from "@assets/generated_images/Transparent_pricing_icon_illustration_5050f43e.png";
+import transparentPricingIcon from "@assets/generated_images/Modern_transparent_pricing_illustration_19a3f1dc.png";
 import supportLocalIcon from "@assets/generated_images/Support_local_businesses_icon_f0e2511a.png";
 
 export default function Home() {
