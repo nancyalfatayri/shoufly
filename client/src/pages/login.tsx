@@ -35,10 +35,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5 flex items-center justify-center p-3 xs:p-4">
+      <Card className="w-full max-w-sm xs:max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-primary">Welcome Back</CardTitle>
+          <CardTitle className="text-xl xs:text-2xl font-bold text-primary">Welcome Back</CardTitle>
           <CardDescription>
             Sign in to your Shoufly account
           </CardDescription>
@@ -63,7 +63,7 @@ export default function LoginPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="h-11"
+                className="h-11 touch-target"
               />
             </div>
             
@@ -78,13 +78,13 @@ export default function LoginPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="h-11 pr-10"
+                  className="h-11 pr-10 touch-target"
                 />
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
+                  className="absolute right-0 top-0 h-full px-3 hover:bg-transparent touch-target"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -94,7 +94,7 @@ export default function LoginPage() {
             
             <Button
               type="submit"
-              className="w-full h-11"
+              className="w-full h-11 touch-target"
               disabled={state.isLoading}
             >
               {state.isLoading ? (

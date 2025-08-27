@@ -105,34 +105,34 @@ export default function EnhancedCheckoutPage() {
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-inter">
         <Header />
         
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 p-8 sm:p-12 text-center">
+        <main className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-8 xs:py-12 sm:py-20">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl xs:rounded-3xl shadow-xl border border-gray-200/50 p-6 xs:p-8 sm:p-12 text-center">
             <div className="mx-auto mb-8">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle className="h-12 sm:h-16 w-12 sm:w-16 text-secondary" />
+              <div className="w-20 xs:w-24 sm:w-32 h-20 xs:h-24 sm:h-32 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-full flex items-center justify-center mx-auto">
+                <CheckCircle className="h-10 xs:h-12 sm:h-16 w-10 xs:w-12 sm:w-16 text-secondary" />
               </div>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 mb-4 xs:mb-6">
               Order Confirmed!
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base xs:text-lg sm:text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed px-4">
               Thank you for your order! Your order #{orderId} has been placed successfully.
             </p>
-            <p className="text-base text-gray-500 mb-8 sm:mb-12">
+            <p className="text-sm xs:text-base text-gray-500 mb-6 xs:mb-8 sm:mb-12">
               You'll receive WhatsApp notifications about your delivery status.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
               <Button 
                 onClick={() => setLocation('/my-orders')}
                 variant="outline" 
-                className="px-8 py-3 text-base font-medium rounded-xl"
+                className="px-6 xs:px-8 py-3 text-sm xs:text-base font-medium rounded-xl touch-target"
               >
                 View My Orders
               </Button>
               <Button 
                 onClick={() => setLocation('/')}
-                className="button-primary px-10 py-3 text-base font-bold rounded-xl shadow-xl hover:shadow-2xl"
+                className="button-primary px-8 xs:px-10 py-3 text-sm xs:text-base font-bold rounded-xl shadow-xl hover:shadow-2xl touch-target"
               >
                 Continue Shopping
               </Button>
@@ -153,22 +153,22 @@ export default function EnhancedCheckoutPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-inter">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <main className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-4 xs:py-6 sm:py-10">
         {/* Checkout Header */}
-        <div className="flex items-center mb-8 sm:mb-12">
+        <div className="flex items-center mb-6 xs:mb-8 sm:mb-12">
           <Link href="/cart">
             <Button 
               variant="ghost" 
-              className="mr-4 text-primary hover:text-primary-hover p-3 rounded-xl hover:bg-white/60 transition-all duration-300 hover-lift border border-gray-200/50"
+              className="mr-2 xs:mr-4 text-primary hover:text-primary-hover p-2 xs:p-3 rounded-xl hover:bg-white/60 transition-all duration-300 hover-lift border border-gray-200/50 touch-target"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div className="flex-1">
-            <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-xl xs:text-2xl sm:text-4xl font-bold text-gray-900 mb-1 xs:mb-2">
               Checkout
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 font-medium">
+            <p className="text-sm xs:text-base sm:text-lg text-gray-600 font-medium">
               Review your order and confirm delivery details
             </p>
           </div>

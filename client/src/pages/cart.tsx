@@ -25,52 +25,52 @@ export default function CartPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-inter">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <main className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-4 xs:py-6 sm:py-10">
         {/* Cart Header */}
-        <div className="flex items-center mb-8 sm:mb-12">
+        <div className="flex items-center mb-6 xs:mb-8 sm:mb-12">
           <Link href="/">
             <Button 
               variant="ghost" 
-              className="mr-4 text-primary hover:text-primary-hover p-3 rounded-xl hover:bg-white/60 transition-all duration-300 hover-lift border border-gray-200/50"
+              className="mr-2 xs:mr-4 text-primary hover:text-primary-hover p-2 xs:p-3 rounded-xl hover:bg-white/60 transition-all duration-300 hover-lift border border-gray-200/50 touch-target"
               data-testid="button-back"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
           <div className="flex-1">
-            <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2" data-testid="text-cart-title">
+            <h1 className="text-xl xs:text-2xl sm:text-4xl font-bold text-gray-900 mb-1 xs:mb-2" data-testid="text-cart-title">
               Shopping Cart
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 font-medium" data-testid="text-cart-subtitle">
+            <p className="text-sm xs:text-base sm:text-lg text-gray-600 font-medium" data-testid="text-cart-subtitle">
               {state.items.length} {state.items.length === 1 ? 'item' : 'items'} in your cart
             </p>
           </div>
         </div>
 
         {state.items.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="w-40 h-40 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
-              <ShoppingBag className="h-20 w-20 text-gray-400" />
+          <div className="text-center py-12 xs:py-16 sm:py-20">
+            <div className="w-24 xs:w-32 sm:w-40 h-24 xs:h-32 sm:h-40 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-6 xs:mb-8 shadow-lg">
+              <ShoppingBag className="h-12 xs:h-16 sm:h-20 w-12 xs:w-16 sm:w-20 text-gray-400" />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6" data-testid="text-empty-cart">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold text-gray-900 mb-4 xs:mb-6" data-testid="text-empty-cart">
               Your cart is empty
             </h2>
-            <p className="text-xl text-gray-600 mb-10 max-w-lg mx-auto leading-relaxed" data-testid="text-empty-cart-message">
+            <p className="text-base xs:text-lg sm:text-xl text-gray-600 mb-6 xs:mb-8 sm:mb-10 max-w-lg mx-auto leading-relaxed px-4" data-testid="text-empty-cart-message">
               Discover amazing products from local merchants and add them to your cart to get started
             </p>
             <Link href="/">
-              <Button className="button-primary px-10 py-4 text-lg font-bold rounded-xl shadow-xl hover:shadow-2xl" data-testid="button-start-shopping">
-                <ShoppingBag className="h-6 w-6 mr-3" />
+              <Button className="button-primary px-6 xs:px-8 sm:px-10 py-3 xs:py-4 text-base xs:text-lg font-bold rounded-xl shadow-xl hover:shadow-2xl touch-target" data-testid="button-start-shopping">
+                <ShoppingBag className="h-5 xs:h-6 w-5 xs:w-6 mr-2 xs:mr-3" />
                 Start Shopping
               </Button>
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xs:gap-8 lg:gap-10">
             {/* Cart Items */}
             <div className="lg:col-span-8">
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 overflow-hidden">
-                <div className="p-6 sm:p-8">
+                <div className="p-4 xs:p-6 sm:p-8">
                   <div className="flex items-center justify-between mb-8">
                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center" data-testid="text-cart-items">
                       <ShoppingBag className="h-7 w-7 mr-3 text-primary" />
@@ -153,7 +153,7 @@ export default function CartPage() {
             {/* Order Summary */}
             <div className="lg:col-span-4">
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 overflow-hidden sticky top-8">
-                <div className="p-6 sm:p-8">
+                <div className="p-4 xs:p-6 sm:p-8">
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 flex items-center" data-testid="text-order-summary">
                     <CreditCard className="h-7 w-7 mr-3 text-primary" />
                     Order Summary

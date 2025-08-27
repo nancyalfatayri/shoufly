@@ -13,13 +13,13 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
   const deliveryTime = 20 + (Number(merchant.id) % 5) * 5;
   
   return (
-    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden card-hover animate-fade-in border border-gray-100 flex flex-col h-full w-full">
+    <div className="group bg-white rounded-xl xs:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden card-hover animate-fade-in border border-gray-100 flex flex-col h-full w-full">
       {/* Image Container with Overlay */}
       <div className="relative overflow-hidden">
         <img
           src={merchant.image}
           alt={`${merchant.name} storefront`}
-          className="w-full h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-40 xs:h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-110"
           data-testid={`img-merchant-${merchant.id}`}
         />
         {/* Gradient Overlay */}
@@ -28,14 +28,14 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
       </div>
       
       {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-4 xs:p-6 flex flex-col flex-1">
         <div className="mb-3">
-          <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300" data-testid={`text-merchant-name-${merchant.id}`}>
+          <h3 className="text-lg xs:text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300" data-testid={`text-merchant-name-${merchant.id}`}>
             {merchant.name}
           </h3>
         </div>
         
-        <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed flex-1" data-testid={`text-merchant-description-${merchant.id}`}>
+        <p className="text-sm xs:text-base text-gray-600 mb-3 xs:mb-4 line-clamp-2 leading-relaxed flex-1" data-testid={`text-merchant-description-${merchant.id}`}>
           {merchant.description}
         </p>
         
@@ -44,7 +44,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
         <div className="mt-auto">
           <Link href={`/merchant/${merchant.id}`}>
             <Button
-              className={`w-full h-12 rounded-xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
+              className={`w-full h-11 xs:h-12 rounded-xl font-bold text-sm xs:text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 touch-target ${
                 merchant.buttonColor === 'blue' 
                   ? 'button-primary' 
                   : 'button-secondary'

@@ -56,16 +56,16 @@ export default function Home() {
             <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }} />
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+          <div className="relative max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-12 xs:py-16 sm:py-24 lg:py-32">
             <div className="text-center">
               {/* Hero Title */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-slide-up" data-testid="text-hero-title">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 xs:mb-6 animate-slide-up" data-testid="text-hero-title">
                 Shop Local,{" "}
-                <span className="block sm:inline bg-white/20 backdrop-blur-sm rounded-2xl px-4 py-2 mt-2 sm:mt-0 sm:ml-2">Delivered Fast</span>
+                <span className="block xs:inline bg-white/20 backdrop-blur-sm rounded-xl xs:rounded-2xl px-3 xs:px-4 py-1.5 xs:py-2 mt-2 xs:mt-0 xs:ml-2">Delivered Fast</span>
               </h1>
               
               {/* Hero Description */}
-              <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed animate-slide-up" data-testid="text-hero-description">
+              <p className="text-base xs:text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-6 xs:mb-8 leading-relaxed animate-slide-up px-4" data-testid="text-hero-description">
                 Order from your favorite local stores and get fresh groceries, pharmacy items, and baked goods delivered straight to your door.
               </p>
               
@@ -76,7 +76,7 @@ export default function Home() {
                     const merchantsSection = document.getElementById('merchants');
                     merchantsSection?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="bg-white text-primary hover:bg-gray-50 font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="bg-white text-primary hover:bg-gray-50 font-bold text-base xs:text-lg px-6 xs:px-8 py-3 xs:py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 touch-target"
                   data-testid="button-start-shopping"
                 >
                   <Search className="h-5 w-5 mr-2" />
@@ -93,16 +93,16 @@ export default function Home() {
         </section>
 
         {/* Search Bar Section */}
-        <section className="relative -mt-8 z-10">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative -mt-6 xs:-mt-8 z-10">
+          <div className="max-w-5xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
             <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
-              <div className="p-8">
+              <div className="p-4 xs:p-6 sm:p-8">
                 <form onSubmit={handleSearchSubmit}>
                   <div className="relative">
                     {/* Search Input Container */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 flex items-center pl-6 pointer-events-none">
-                        <Search className={`h-6 w-6 transition-colors duration-300 ${
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-4 xs:pl-6 pointer-events-none">
+                        <Search className={`h-5 xs:h-6 w-5 xs:w-6 transition-colors duration-300 ${
                           isSearchFocused ? 'text-primary' : 'text-gray-400'
                         }`} />
                       </div>
@@ -112,8 +112,8 @@ export default function Home() {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onFocus={() => setIsSearchFocused(true)}
                         onBlur={() => setIsSearchFocused(false)}
-                        placeholder="Search for merchants and stores..."
-                        className={`w-full pl-16 pr-32 py-6 text-lg bg-gray-50 border-0 rounded-2xl outline-none transition-all duration-300 placeholder:text-gray-400 ${
+                        placeholder="Search merchants and stores..."
+                        className={`w-full pl-12 xs:pl-16 pr-24 xs:pr-32 py-4 xs:py-6 text-base xs:text-lg bg-gray-50 border-0 rounded-xl xs:rounded-2xl outline-none transition-all duration-300 placeholder:text-gray-400 ${
                           isSearchFocused 
                             ? 'bg-white shadow-xl ring-4 ring-primary/10 scale-[1.02]' 
                             : 'hover:bg-white hover:shadow-lg'
@@ -122,12 +122,12 @@ export default function Home() {
                       />
                       
                       {/* Action Buttons Container */}
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 space-x-2">
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-2 xs:pr-3 space-x-1 xs:space-x-2">
                         {searchQuery && (
                           <button
                             type="button"
                             onClick={clearSearch}
-                            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200"
+                            className="p-1.5 xs:p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-all duration-200 touch-target"
                             data-testid="button-clear-search"
                           >
                             <X className="h-5 w-5" />
@@ -135,10 +135,10 @@ export default function Home() {
                         )}
                         <Button 
                           type="submit"
-                          className="button-primary px-6 py-3 text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                          className="button-primary px-4 xs:px-6 py-2 xs:py-3 text-sm xs:text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 touch-target"
                           data-testid="button-search"
                         >
-                          <Search className="h-5 w-5" />
+                          <Search className="h-4 xs:h-5 w-4 xs:w-5" />
                         </Button>
                       </div>
                     </div>
@@ -168,16 +168,16 @@ export default function Home() {
 
         {/* Merchants Section */}
         <section id="merchants" className="pt-16 pb-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="text-featured-merchants">
+          <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8 xs:mb-12">
+              <h2 className="text-2xl xs:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 xs:mb-4" data-testid="text-featured-merchants">
                 {searchQuery ? (
                   <>Search <span className="text-gradient">Results</span></>
                 ) : (
                   <>Featured <span className="text-gradient">Merchants</span></>
                 )}
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-base xs:text-lg text-gray-600 max-w-2xl mx-auto px-4">
                 {searchQuery ? (
                   filteredMerchants.length > 0 
                     ? `Showing ${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'merchant' : 'merchants'} matching your search`
@@ -189,7 +189,7 @@ export default function Home() {
             </div>
             
             {filteredMerchants.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch" data-testid="grid-merchants">
+              <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6 lg:gap-8 items-stretch" data-testid="grid-merchants">
                 {filteredMerchants.map((merchant, index) => (
                   <div key={merchant.id} className="animate-fade-in flex" style={{ animationDelay: `${index * 100}ms` }}>
                     <MerchantCard merchant={merchant} />
