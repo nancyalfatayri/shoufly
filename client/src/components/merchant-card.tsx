@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Merchant } from "@shared/schema";
-import { Star, Clock, MapPin } from "lucide-react";
+import { } from "lucide-react";
 
 interface MerchantCardProps {
   merchant: Merchant;
@@ -25,47 +25,20 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
-        {/* Rating Badge */}
-        <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center space-x-1 shadow-lg animate-slide-up">
-          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-          <span className="text-sm font-bold text-gray-800">{rating.toFixed(1)}</span>
-        </div>
-        
-        {/* Delivery Time Badge */}
-        <div className="absolute top-4 right-4 bg-gradient-primary text-white rounded-full px-3 py-1.5 flex items-center space-x-1 shadow-lg animate-slide-up">
-          <Clock className="h-4 w-4" />
-          <span className="text-sm font-bold">{deliveryTime}min</span>
-        </div>
       </div>
       
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
-        <div className="flex items-start justify-between mb-3">
+        <div className="mb-3">
           <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300" data-testid={`text-merchant-name-${merchant.id}`}>
             {merchant.name}
           </h3>
-          <div className="flex items-center space-x-1 text-gray-500">
-            <MapPin className="h-4 w-4" />
-            <span className="text-sm">2.3km</span>
-          </div>
         </div>
         
         <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed flex-1" data-testid={`text-merchant-description-${merchant.id}`}>
           {merchant.description}
         </p>
         
-        {/* Quick Info */}
-        <div className="flex items-center justify-between mb-5 text-sm text-gray-500">
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center space-x-1">
-              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              <span>{rating.toFixed(1)}</span>
-            </span>
-            <span>•</span>
-            <span>${(15 + Number(merchant.id) % 10)} delivery</span>
-          </div>
-          <span className="text-green-600 font-medium">Open now</span>
-        </div>
         
         {/* Shop Button */}
         <div className="mt-auto">
