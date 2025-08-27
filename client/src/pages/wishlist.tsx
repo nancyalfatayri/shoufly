@@ -1,13 +1,60 @@
-import { Link } from "wouter";
+import { useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Heart, ShoppingCart, Trash2 } from "lucide-react";
+import { ArrowLeft, Heart, ShoppingCart, Trash2, Lock } from "lucide-react";
 import { useWishlist } from "@/contexts/wishlist-context";
 import { useCart } from "@/contexts/cart-context";
+import { useAuth } from "@/contexts/auth-context";
 
 export default function WishlistPage() {
   const { state: wishlistState, dispatch: wishlistDispatch } = useWishlist();
   const { dispatch: cartDispatch } = useCart();
+  const { isAuthenticated } = useAuth();
+  const [location, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setLocation('/login');
+    }
+  }, [isAuthenticated, setLocation]);
+
+  // Show login prompt if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-inter">
+        <Header />
+        
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 p-8 sm:p-12 text-center">
+            <div className="max-w-md mx-auto">
+              <div className="bg-gradient-to-br from-amber-500/20 to-amber-500/10 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+                <Lock className="h-10 w-10 text-amber-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Sign In Required
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Please sign in to your account to view and manage your wishlist items.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/login">
+                  <Button className="button-primary px-8 py-3 text-lg font-semibold rounded-xl">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link href="/register">
+                  <Button variant="outline" className="px-8 py-3 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-primary hover:text-primary hover:bg-primary/5">
+                    Create Account
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   const removeFromWishlist = (productId: string) => {
     wishlistDispatch({ type: 'REMOVE_ITEM', payload: productId });

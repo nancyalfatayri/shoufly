@@ -1,13 +1,59 @@
-import { useState } from "react";
-import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/cart-context";
-import { ArrowLeft, CheckCircle, Truck } from "lucide-react";
+import { useAuth } from "@/contexts/auth-context";
+import { ArrowLeft, CheckCircle, Truck, Lock } from "lucide-react";
 
 export default function CheckoutPage() {
   const { state, dispatch } = useCart();
+  const { isAuthenticated } = useAuth();
+  const [location, setLocation] = useLocation();
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setLocation('/login');
+    }
+  }, [isAuthenticated, setLocation]);
+
+  // Show login prompt if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-inter">
+        <Header />
+        
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 p-8 sm:p-12 text-center">
+            <div className="mx-auto mb-8">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-amber-500/20 to-amber-500/10 rounded-full flex items-center justify-center mx-auto">
+                <Lock className="h-12 sm:h-16 w-12 sm:w-16 text-amber-600" />
+              </div>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+              Sign In Required
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+              Please sign in to your account to proceed with checkout and complete your order.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/login">
+                <Button className="button-primary px-10 py-4 text-lg font-bold rounded-xl shadow-xl hover:shadow-2xl">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button variant="outline" className="px-10 py-4 text-lg font-bold rounded-xl border-2 border-gray-300 hover:border-primary hover:text-primary hover:bg-primary/5">
+                  Create Account
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   const confirmOrder = () => {
     setIsOrderConfirmed(true);

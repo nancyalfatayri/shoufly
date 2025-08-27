@@ -2,10 +2,12 @@ import { Link } from "wouter";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/cart-context";
-import { ArrowLeft, Plus, Minus, Trash2, ShoppingBag, CreditCard, Truck } from "lucide-react";
+import { useAuth } from "@/contexts/auth-context";
+import { ArrowLeft, Plus, Minus, Trash2, ShoppingBag, CreditCard, Truck, Lock } from "lucide-react";
 
 export default function CartPage() {
   const { state, dispatch } = useCart();
+  const { isAuthenticated } = useAuth();
 
   const updateQuantity = (id: string, quantity: number) => {
     dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity } });
@@ -175,15 +177,35 @@ export default function CartPage() {
                   </div>
                   
                   <div className="space-y-4">
-                    <Link href="/checkout" className="block">
-                      <Button 
-                        className="w-full button-primary py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl"
-                        data-testid="button-checkout"
-                      >
-                        <CreditCard className="h-6 w-6 mr-3" />
-                        Proceed to Checkout
-                      </Button>
-                    </Link>
+                    {isAuthenticated ? (
+                      <Link href="/checkout" className="block">
+                        <Button 
+                          className="w-full button-primary py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl"
+                          data-testid="button-checkout"
+                        >
+                          <CreditCard className="h-6 w-6 mr-3" />
+                          Proceed to Checkout
+                        </Button>
+                      </Link>
+                    ) : (
+                      <div className="space-y-3">
+                        <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center space-x-3">
+                          <Lock className="h-5 w-5 text-amber-600 flex-shrink-0" />
+                          <p className="text-amber-800 text-sm font-medium">
+                            Sign in to proceed with checkout
+                          </p>
+                        </div>
+                        <Link href="/login" className="block">
+                          <Button 
+                            className="w-full button-primary py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl"
+                            data-testid="button-signin-checkout"
+                          >
+                            <Lock className="h-6 w-6 mr-3" />
+                            Sign In to Checkout
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
                     <Link href="/" className="block">
                       <Button 
                         variant="outline" 
