@@ -88,6 +88,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         type: 'LOGIN_SUCCESS', 
         payload: { user: result.user, token: result.token } 
       });
+      // Trigger wishlist load for newly logged in user
+      window.dispatchEvent(new CustomEvent('userLogin', { 
+        detail: { userId: result.user.id } 
+      }));
     } catch (error: any) {
       dispatch({ type: 'LOGIN_ERROR', payload: error.message });
       throw error;
@@ -113,6 +117,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         type: 'REGISTER_SUCCESS', 
         payload: { user: result.user, token: result.token } 
       });
+      // Trigger wishlist load for newly registered user
+      window.dispatchEvent(new CustomEvent('userLogin', { 
+        detail: { userId: result.user.id } 
+      }));
     } catch (error: any) {
       dispatch({ type: 'REGISTER_ERROR', payload: error.message });
       throw error;
@@ -121,6 +129,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = () => {
     dispatch({ type: 'LOGOUT' });
+    // Clear user-specific data on logout
+    window.dispatchEvent(new CustomEvent('userLogout'));
   };
 
   // Check token on app load
@@ -137,6 +147,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             type: 'LOGIN_SUCCESS', 
             payload: { user: result.user, token } 
           });
+          // Trigger wishlist load for logged in user
+          window.dispatchEvent(new CustomEvent('userLogin', { 
+            detail: { userId: result.user.id } 
+          }));
         } else {
           localStorage.removeItem('auth_token');
         }
