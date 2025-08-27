@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { ShoppingCart, Menu, X, Home, Info, Mail } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { useState } from "react";
-import shouflylLogo from "@assets/generated_images/Shoufly_delivery_app_logo_47ff6a01.png";
+import shouflylLogo from "@assets/generated_images/Shoufly_delivery_app_logo_a8e4d021.png";
 
 export function Header() {
   const { state } = useCart();
@@ -27,7 +27,7 @@ export function Header() {
               <img
                 src={shouflylLogo}
                 alt="Shoufly logo"
-                className="h-10 sm:h-12 w-auto transition-transform duration-300 hover:scale-105"
+                className="h-12 sm:h-16 w-auto transition-transform duration-300 hover:scale-105"
               />
             </Link>
 
