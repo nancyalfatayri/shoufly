@@ -65,7 +65,7 @@ export default function Home() {
               </h1>
               
               {/* Hero Description */}
-              <p className="text-base xs:text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-6 xs:mb-8 leading-relaxed animate-slide-up px-4" data-testid="text-hero-description">
+              <p className="text-base xs:text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-4 xs:mb-5 leading-relaxed animate-slide-up px-4" data-testid="text-hero-description">
                 Order from your favorite local stores and get fresh groceries, pharmacy items, and baked goods delivered straight to your door.
               </p>
               
