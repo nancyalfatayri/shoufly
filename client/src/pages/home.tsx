@@ -58,12 +58,6 @@ export default function Home() {
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
             <div className="text-center">
-              {/* Hero Badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-6 animate-fade-in">
-                <Star className="h-4 w-4 mr-2 fill-yellow-300 text-yellow-300" />
-                Trusted by 10,000+ happy customers
-              </div>
-              
               {/* Hero Title */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-slide-up" data-testid="text-hero-title">
                 Shop Local,{" "}
@@ -75,18 +69,14 @@ export default function Home() {
                 Order from your favorite local stores and get fresh groceries, pharmacy items, and baked goods delivered straight to your door in under 30 minutes.
               </p>
               
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in">
+              {/* CTA Button */}
+              <div className="flex justify-center mb-12 animate-fade-in">
                 <Link href="/#merchants">
-                  <Button className="w-full sm:w-auto bg-white text-primary hover:bg-gray-50 font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                  <Button className="bg-white text-primary hover:bg-gray-50 font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                     <Search className="h-5 w-5 mr-2" />
                     Start Shopping
                   </Button>
                 </Link>
-                <Button variant="outline" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 font-bold text-lg px-8 py-4 rounded-xl backdrop-blur-sm">
-                  <MapPin className="h-5 w-5 mr-2" />
-                  Find Stores Near Me
-                </Button>
               </div>
               
               {/* Trust Indicators */}
