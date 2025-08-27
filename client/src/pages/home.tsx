@@ -2,11 +2,37 @@ import { Header } from "@/components/header";
 import { MerchantCard } from "@/components/merchant-card";
 import { Button } from "@/components/ui/button";
 import { merchants } from "@/lib/data";
-import { Search, MapPin, Clock, Star, Truck, Shield, Heart } from "lucide-react";
+import { Search, MapPin, Clock, Star, Truck, Shield, Heart, X } from "lucide-react";
 import { Link } from "wouter";
+import { useState, useMemo } from "react";
 import shouflylLogo from "@assets/generated_images/Shoufly_modern_delivery_logo_5ce80390.png";
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Filter merchants based on search query
+  const filteredMerchants = useMemo(() => {
+    if (!searchQuery.trim()) return merchants;
+    
+    return merchants.filter(merchant => 
+      merchant.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      merchant.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Scroll to merchants section when search is submitted
+    document.getElementById('merchants')?.scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+  };
+
   return (
     <div className="min-h-screen bg-background font-inter">
       <Header />
@@ -82,20 +108,55 @@ export default function Home() {
         <section className="relative -mt-10 z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-100">
-              <div className="flex flex-col sm:flex-row gap-4">
+              <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1 relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5 z-10" />
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => setIsSearchFocused(true)}
+                    onBlur={() => setIsSearchFocused(false)}
                     placeholder="Search for stores, products, or categories..."
-                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
+                    className={`w-full pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 ${
+                      isSearchFocused 
+                        ? 'border-primary ring-4 ring-primary/10 shadow-lg' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
                     data-testid="input-search"
                   />
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={clearSearch}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-200 z-10"
+                      data-testid="button-clear-search"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  )}
                 </div>
-                <Button className="button-primary px-8 py-4 rounded-xl font-bold">
+                <Button 
+                  type="submit"
+                  className="button-primary px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-xl"
+                  data-testid="button-search"
+                >
+                  <Search className="h-5 w-5 mr-2" />
                   Search
                 </Button>
-              </div>
+              </form>
+              
+              {/* Search Results Count */}
+              {searchQuery && (
+                <div className="mt-4 px-2">
+                  <p className="text-sm text-gray-600">
+                    {filteredMerchants.length > 0 
+                      ? `Found ${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'result' : 'results'} for "${searchQuery}"`
+                      : `No results found for "${searchQuery}"`
+                    }
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -106,20 +167,59 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4" data-testid="text-featured-merchants">
-                Featured <span className="text-gradient">Merchants</span>
+                {searchQuery ? (
+                  <>Search <span className="text-gradient">Results</span></>
+                ) : (
+                  <>Featured <span className="text-gradient">Merchants</span></>
+                )}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Discover amazing local businesses in your neighborhood. From fresh groceries to specialty items.
+                {searchQuery ? (
+                  filteredMerchants.length > 0 
+                    ? `Showing ${filteredMerchants.length} ${filteredMerchants.length === 1 ? 'merchant' : 'merchants'} matching your search`
+                    : "Try adjusting your search terms or browse all merchants below"
+                ) : (
+                  "Discover amazing local businesses in your neighborhood. From fresh groceries to specialty items."
+                )}
               </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" data-testid="grid-merchants">
-              {merchants.map((merchant, index) => (
-                <div key={merchant.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                  <MerchantCard merchant={merchant} />
+            {filteredMerchants.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" data-testid="grid-merchants">
+                {filteredMerchants.map((merchant, index) => (
+                  <div key={merchant.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                    <MerchantCard merchant={merchant} />
+                  </div>
+                ))}
+              </div>
+            ) : searchQuery ? (
+              <div className="text-center py-12">
+                <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Search className="h-12 w-12 text-gray-400" />
                 </div>
-              ))}
-            </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  No merchants found
+                </h3>
+                <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                  We couldn't find any merchants matching "{searchQuery}". Try a different search term or browse all available merchants.
+                </p>
+                <Button 
+                  onClick={clearSearch}
+                  variant="outline"
+                  className="button-secondary text-white border-0"
+                >
+                  Browse All Merchants
+                </Button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" data-testid="grid-merchants">
+                {merchants.map((merchant, index) => (
+                  <div key={merchant.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                    <MerchantCard merchant={merchant} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
