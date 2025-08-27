@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Product } from "@shared/schema";
 import { Apple, Croissant, Milk, Cookie, Battery, StickyNote, Pill, Bandage, Thermometer, Plus, Check, Heart } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
+import { useWishlist } from "@/contexts/wishlist-context";
 
 interface ProductCardProps {
   product: Product;
@@ -25,9 +26,10 @@ const getProductIcon = (productName: string) => {
 
 export function ProductCard({ product, merchantButtonColor }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
   const { dispatch } = useCart();
+  const { dispatch: wishlistDispatch, isInWishlist } = useWishlist();
   const IconComponent = getProductIcon(product.name);
+  const isLiked = isInWishlist(product.id);
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_ITEM', payload: product });
@@ -36,7 +38,11 @@ export function ProductCard({ product, merchantButtonColor }: ProductCardProps) 
   };
 
   const toggleLike = () => {
-    setIsLiked(!isLiked);
+    if (isLiked) {
+      wishlistDispatch({ type: 'REMOVE_ITEM', payload: product.id });
+    } else {
+      wishlistDispatch({ type: 'ADD_ITEM', payload: product });
+    }
   };
 
   return (

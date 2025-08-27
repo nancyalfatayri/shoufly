@@ -1,12 +1,15 @@
 import { Link } from "wouter";
-import { ShoppingCart, Menu, X, Home, Info, Mail } from "lucide-react";
+import { ShoppingCart, Menu, X, Home, Info, Mail, Heart } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
+import { useWishlist } from "@/contexts/wishlist-context";
 import { useState } from "react";
 import shouflylLogo from "@assets/generated_images/Clean_Shoufly_text_logo_cd109857.png";
 
 export function Header() {
   const { state } = useCart();
+  const { state: wishlistState } = useWishlist();
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
+  const wishlistCount = wishlistState.items.length;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -59,8 +62,23 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Cart and Mobile Menu Button */}
-            <div className="flex items-center space-x-4">
+            {/* Cart, Wishlist and Mobile Menu Button */}
+            <div className="flex items-center space-x-2">
+              {/* Wishlist */}
+              <Link 
+                href="/wishlist" 
+                className="relative text-gray-700 hover:text-red-500 transition-all duration-300 p-3 -m-3 hover:bg-gray-50 rounded-full hover-lift" 
+                data-testid="link-wishlist"
+                onClick={closeMobileMenu}
+              >
+                <Heart size={22} className={`transition-all duration-300 hover:scale-110 ${wishlistCount > 0 ? 'fill-red-500 text-red-500' : ''}`} />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-bounce-in" data-testid="wishlist-count">
+                    {wishlistCount > 99 ? '99+' : wishlistCount}
+                  </span>
+                )}
+              </Link>
+              
               {/* Cart */}
               <Link 
                 href="/cart" 
@@ -163,24 +181,45 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* Mobile Cart Summary */}
-          <div className="mt-8 p-4 bg-gray-50 rounded-xl">
-            <Link 
-              href="/cart" 
-              className="flex items-center justify-between text-gray-700 hover:text-primary transition-colors"
-              data-testid="link-mobile-cart"
-              onClick={closeMobileMenu}
-            >
-              <div className="flex items-center space-x-3">
-                <ShoppingCart size={20} />
-                <span className="font-medium">My Cart</span>
-              </div>
-              {itemCount > 0 && (
-                <span className="gradient-primary text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
-                  {itemCount > 99 ? '99+' : itemCount}
-                </span>
-              )}
-            </Link>
+          {/* Mobile Wishlist and Cart Summary */}
+          <div className="mt-8 space-y-3">
+            <div className="p-4 bg-red-50 rounded-xl">
+              <Link 
+                href="/wishlist" 
+                className="flex items-center justify-between text-gray-700 hover:text-red-500 transition-colors"
+                data-testid="link-mobile-wishlist"
+                onClick={closeMobileMenu}
+              >
+                <div className="flex items-center space-x-3">
+                  <Heart size={20} className={wishlistCount > 0 ? 'fill-red-500 text-red-500' : 'text-gray-400'} />
+                  <span className="font-medium">My Wishlist</span>
+                </div>
+                {wishlistCount > 0 && (
+                  <span className="bg-red-500 text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
+                    {wishlistCount > 99 ? '99+' : wishlistCount}
+                  </span>
+                )}
+              </Link>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-xl">
+              <Link 
+                href="/cart" 
+                className="flex items-center justify-between text-gray-700 hover:text-primary transition-colors"
+                data-testid="link-mobile-cart"
+                onClick={closeMobileMenu}
+              >
+                <div className="flex items-center space-x-3">
+                  <ShoppingCart size={20} />
+                  <span className="font-medium">My Cart</span>
+                </div>
+                {itemCount > 0 && (
+                  <span className="gradient-primary text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
+                    {itemCount > 99 ? '99+' : itemCount}
+                  </span>
+                )}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
