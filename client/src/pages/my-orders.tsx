@@ -11,9 +11,11 @@ import {
   XCircle,
   Package,
   MapPin,
-  Phone
+  Phone,
+  ArrowLeft
 } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
+import { Button } from "@/components/ui/button";
 
 interface OrderItem {
   id: number;
@@ -97,9 +99,19 @@ export default function MyOrdersPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">My Orders</h1>
-          <p className="text-gray-600">Track your delivery orders</p>
+        <div className="flex items-center mb-8">
+          <Link href="/">
+            <Button 
+              variant="ghost" 
+              className="mr-4 text-primary hover:text-primary-hover p-3 rounded-xl hover:bg-white/60 transition-all duration-300 hover-lift border border-gray-200/50"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+          </Link>
+          <div className="flex-1">
+            <h1 className="text-3xl font-bold text-gray-900">My Orders</h1>
+            <p className="text-gray-600">Track your delivery orders</p>
+          </div>
         </div>
 
         {error && (
