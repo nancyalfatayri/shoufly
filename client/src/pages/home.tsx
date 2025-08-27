@@ -200,9 +200,9 @@ export default function Home() {
             </div>
             
             {filteredMerchants.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" data-testid="grid-merchants">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch" data-testid="grid-merchants">
                 {filteredMerchants.map((merchant, index) => (
-                  <div key={merchant.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                  <div key={merchant.id} className="animate-fade-in flex" style={{ animationDelay: `${index * 100}ms` }}>
                     <MerchantCard merchant={merchant} />
                   </div>
                 ))}
@@ -227,9 +227,9 @@ export default function Home() {
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" data-testid="grid-merchants">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch" data-testid="grid-merchants">
                 {merchants.map((merchant, index) => (
-                  <div key={merchant.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                  <div key={merchant.id} className="animate-fade-in flex" style={{ animationDelay: `${index * 100}ms` }}>
                     <MerchantCard merchant={merchant} />
                   </div>
                 ))}

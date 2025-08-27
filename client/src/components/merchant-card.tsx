@@ -13,7 +13,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
   const deliveryTime = 20 + (Number(merchant.id) % 5) * 5;
   
   return (
-    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden card-hover animate-fade-in border border-gray-100">
+    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden card-hover animate-fade-in border border-gray-100 flex flex-col h-full w-full">
       {/* Image Container with Overlay */}
       <div className="relative overflow-hidden">
         <img
@@ -39,7 +39,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
       </div>
       
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300" data-testid={`text-merchant-name-${merchant.id}`}>
             {merchant.name}
@@ -50,7 +50,7 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
           </div>
         </div>
         
-        <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed" data-testid={`text-merchant-description-${merchant.id}`}>
+        <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed flex-1" data-testid={`text-merchant-description-${merchant.id}`}>
           {merchant.description}
         </p>
         
@@ -68,21 +68,23 @@ export function MerchantCard({ merchant }: MerchantCardProps) {
         </div>
         
         {/* Shop Button */}
-        <Link href={`/merchant/${merchant.id}`}>
-          <Button
-            className={`w-full h-12 rounded-xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
-              merchant.buttonColor === 'blue' 
-                ? 'button-primary' 
-                : 'button-secondary'
-            }`}
-            data-testid={`button-shop-${merchant.id}`}
-          >
-            <span className="flex items-center justify-center space-x-2">
-              <span>Shop Now</span>
-              <span className="text-lg group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </span>
-          </Button>
-        </Link>
+        <div className="mt-auto">
+          <Link href={`/merchant/${merchant.id}`}>
+            <Button
+              className={`w-full h-12 rounded-xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
+                merchant.buttonColor === 'blue' 
+                  ? 'button-primary' 
+                  : 'button-secondary'
+              }`}
+              data-testid={`button-shop-${merchant.id}`}
+            >
+              <span className="flex items-center justify-center space-x-2">
+                <span>Shop Now</span>
+                <span className="text-lg group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </span>
+            </Button>
+          </Link>
+        </div>
       </div>
       
       {/* Bottom Accent Line */}
