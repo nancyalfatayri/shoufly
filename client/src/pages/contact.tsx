@@ -147,16 +147,8 @@ export default function ContactPage() {
                 <h3 className="font-bold text-gray-900 text-lg mb-4">Customer Service</h3>
                 <div className="space-y-3 text-base text-gray-600">
                   <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span className="font-semibold text-gray-900">9:00 AM - 8:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="font-semibold text-gray-900">10:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="font-semibold text-gray-900">12:00 PM - 5:00 PM</span>
+                    <span>Monday - Sunday</span>
+                    <span className="font-semibold text-gray-900">8:00 AM - 10:00 PM</span>
                   </div>
                 </div>
               </div>
