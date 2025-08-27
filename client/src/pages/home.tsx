@@ -66,11 +66,11 @@ export default function Home() {
               
               {/* Hero Description */}
               <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed animate-slide-up" data-testid="text-hero-description">
-                Order from your favorite local stores and get fresh groceries, pharmacy items, and baked goods delivered straight to your door in under 30 minutes.
+                Order from your favorite local stores and get fresh groceries, pharmacy items, and baked goods delivered straight to your door.
               </p>
               
               {/* CTA Button */}
-              <div className="flex justify-center mb-12 animate-fade-in">
+              <div className="flex justify-center animate-fade-in">
                 <Button 
                   onClick={() => {
                     const merchantsSection = document.getElementById('merchants');
@@ -82,22 +82,6 @@ export default function Home() {
                   <Search className="h-5 w-5 mr-2" />
                   Start Shopping
                 </Button>
-              </div>
-              
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-6 max-w-md mx-auto text-white/80">
-                <div className="text-center">
-                  <Clock className="h-8 w-8 mx-auto mb-2" />
-                  <p className="text-sm font-medium">30min Delivery</p>
-                </div>
-                <div className="text-center">
-                  <Truck className="h-8 w-8 mx-auto mb-2" />
-                  <p className="text-sm font-medium">Free Delivery</p>
-                </div>
-                <div className="text-center">
-                  <Shield className="h-8 w-8 mx-auto mb-2" />
-                  <p className="text-sm font-medium">Secure Payment</p>
-                </div>
               </div>
             </div>
           </div>
